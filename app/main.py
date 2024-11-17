@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.routers import matches, players
+from app.routers import matches, players, teams
 
 app = FastAPI(
     title="Football Analytics API",
@@ -10,6 +10,7 @@ app = FastAPI(
 # Incluir rutas
 app.include_router(matches.router, prefix="/matches", tags=["Matches"])
 app.include_router(players.router, prefix="/players", tags=["Players"])
+app.include_router(players.router, prefix="/players", tags=["Teams"])
 
 @app.get("/")
 async def root():
