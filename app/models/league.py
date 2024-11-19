@@ -1,10 +1,8 @@
 from pydantic import BaseModel
-from typing import List, Optional, Tuple
-from team import Team
+from typing import List
 
 class League(BaseModel):
     league_id: str
     name: str
     country: str
-    classification_league: List[Team]
-
+    classification_league: List[str]

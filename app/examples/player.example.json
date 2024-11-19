@@ -1,0 +1,16 @@
+{
+    "player_id": "p_0001",
+    "name": "Nico",
+    "surname": "Williams",
+    "nacionality": "Espanyola",
+    "team_id": "t_001",
+    "total_goals": 17,
+    "total_cards": 3,
+    "total_min": 2800,
+    "total_outlines": 10,
+    "total_tackles": 15,
+    "total_shots_on_target": 50,
+    "total_dribbles": 60,
+    "total_balls_lost": 20,
+    "total_completed_passes": 500
+}

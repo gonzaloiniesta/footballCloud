@@ -6,5 +6,8 @@ class Team(BaseModel):
     name: str
     league: str
     country: str
-    nacionality: str
+    goals_for: int
+    goals_against: int
+    cards: int
+    players: List[str]
     

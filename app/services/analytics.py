@@ -1,5 +1,0 @@
-'''
-
-Pochito's rules ;)
-
-'''

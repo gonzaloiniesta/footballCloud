@@ -1,0 +1,21 @@
+{
+    "team_id": "t_0101",
+    "name": "Ahtletic",
+    "league": "LaLiga",
+    "country": "Spain",
+    "goals_for": 45,
+    "goals_against": 27,
+    "cards": 8,
+    "players": [
+        "p_0001",
+        "p_0002",
+        "p_0003",
+        "p_0005",
+        "p_0004",
+        "p_0006",
+        "p_0007",
+        "p_0008",
+        "p_0009",
+        "p_0010"
+    ]
+}

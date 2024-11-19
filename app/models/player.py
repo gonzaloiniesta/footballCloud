@@ -5,8 +5,8 @@ class Player(BaseModel):
     player_id: str
     name: str
     surname: str
-    team: str
     nacionality: str
+    team_id: str
     total_goals: int
     total_cards: int
     total_min: int
