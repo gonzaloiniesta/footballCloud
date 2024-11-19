@@ -6,4 +6,5 @@ class Team(BaseModel):
     name: str
     league: str
     country: str
-    nacionality: str 
+    nacionality: str
+    

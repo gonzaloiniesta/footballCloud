@@ -1,10 +1,12 @@
-from pydantic import BaseModel
-from typing import List, Optional
+from pydantic import Literal, BaseModel
+from typing import List, Optional, Tuple
+from player_match import PlayerMatch
 
 class Match(BaseModel):
     match_id: str
     home_team: str
     away_team: str
     date: str
-    score: Optional[str] = None
-    events: List[dict] = []
+    score: Tuple[int, int]
+    cards: Optional[Literal[0, 1, 2]] = 0
+    players: List[PlayerMatch]

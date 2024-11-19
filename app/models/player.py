@@ -7,5 +7,12 @@ class Player(BaseModel):
     surname: str
     team: str
     nacionality: str
-    score: Optional[str] = None
-    cards: int
+    total_goals: int
+    total_cards: int
+    total_min: int
+    total_outlines: int
+    total_tackles: int
+    total_shots_on_target: int
+    total_dribbles: int
+    total_balls_lost: int
+    total_completed_passes: int
