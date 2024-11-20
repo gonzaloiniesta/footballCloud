@@ -2,34 +2,26 @@ version: '3.8'
 
 services:
   mongodb:
-    image: mongo:6.0  # Usa una versión estable específica
+    image: mongo:6.0  # Imagen de MongoDB
     container_name: mongodb
     restart: always
-    ports:
-      - "27017:27017"  # Exponiendo MongoDB al puerto local
-    volumes:
-      - mongodb_data:/data/db  # Volumen para persistencia de datos
     environment:
-      MONGO_INITDB_ROOT_USERNAME: adm_user_mongodb  # Usuario root inicial
-      MONGO_INITDB_ROOT_PASSWORD: Hg_fdwJjn65Gdsd  # Contraseña del root
+      MONGO_INITDB_ROOT_USERNAME: admin  # Usuario para MongoDB
+      MONGO_INITDB_ROOT_PASSWORD: adminpassword  # Contraseña para MongoDB
+    volumes:
+      - mongodb_data:/data/db  # Volumen para persistir datos
+    network_mode: host  # Usa la red del host
 
-  # fastapi:
-  #   build:
-  #     context: .
-  #     dockerfile: Dockerfile
-  #   container_name: fastapi
-  #   ports:
-  #     - "8000:8000"
-  #   volumes:
-  #     - ./app:/app
-  #   depends_on:
-  #     - mongodb
-  #   networks:
-  #     - football_network
+  mongo-express:
+    image: mongo-express:latest  # Cliente visual para MongoDB
+    container_name: mongo-express
+    restart: always
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: admin  # Usuario de administración
+      ME_CONFIG_MONGODB_ADMINPASSWORD: adminpassword  # Contraseña de administración
+      ME_CONFIG_MONGODB_SERVER: 127.0.0.1  # Conexión al servicio MongoDB en el host
+      ME_CONFIG_MONGODB_ENABLE_ADMIN: "true"  # Habilitar el modo de administrador
+    network_mode: host  # Usa la red del host
 
 volumes:
   mongodb_data:
-
-networks:
-  football_network:
-    driver: bridge

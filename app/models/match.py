@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import List, Tuple, Literal
+from typing import List, Tuple
 from .player_match import PlayerMatch
 
 class Match(BaseModel):
@@ -8,6 +8,8 @@ class Match(BaseModel):
     visiting_team_id: str
     date: str
     score: Tuple[int, int]
+    possesion_home_team: int
+    possesion_visiting_team: int
     cards_home_team: int
     cards_visiting_team: int
     outlines_home_team: int

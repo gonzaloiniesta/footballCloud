@@ -6,6 +6,11 @@ class Team(BaseModel):
     name: str
     league: str
     country: str
+    points: int
+    wins : InterruptedError
+    draws : int
+    loses : int
+    classification: int
     goals_for: int
     goals_against: int
     cards: int
