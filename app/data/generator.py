@@ -39,6 +39,11 @@ def generate_team(team_id, league_name, country, player_ids):
         "name": f"Team{team_id[-4:]}",
         "league": league_name,
         "country": country,
+        "classification": 0,  # Inicialmente sin clasificación
+        "points": 0,
+        "wins": 0,
+        "draws": 0,
+        "loses": 0,
         "goals_for": 0,
         "goals_against": 0,
         "cards": 0,
@@ -51,7 +56,7 @@ def generate_league(league_id, country, team_ids):
         "league_id": league_id,
         "name": f"League{league_id}",
         "country": country,
-        "classification_league": team_ids
+        "classification_league": []  # Se llenará con los equipos ordenados
     }
 
 # Actualizar estadísticas de jugadores
@@ -65,6 +70,19 @@ def update_player_stats(player, stats):
     player["total_dribbles"] += stats["dribbles"]
     player["total_balls_lost"] += stats["balls_lost"]
     player["total_completed_passes"] += stats["completed_passes"]
+
+# Actualizar estadísticas de equipos
+def update_team_stats(team, goals_for, goals_against, result):
+    team["goals_for"] += goals_for
+    team["goals_against"] += goals_against
+    if result == "win":
+        team["points"] += 3
+        team["wins"] += 1
+    elif result == "draw":
+        team["points"] += 1
+        team["draws"] += 1
+    elif result == "lose":
+        team["loses"] += 1
 
 # Generador de partidos
 def generate_match(match_id, home_team, visiting_team, home_players, visiting_players, date, all_players):
@@ -82,24 +100,22 @@ def generate_match(match_id, home_team, visiting_team, home_players, visiting_pl
             "completed_passes": random.randint(20, 50)
         }
 
-    # Estadísticas de jugadores
     home_players_stats = [generate_player_stats(player["player_id"]) for player in home_players]
     visiting_players_stats = [generate_player_stats(player["player_id"]) for player in visiting_players]
 
-    # Calcular totales
     home_score = sum(player["goals"] for player in home_players_stats)
     visiting_score = sum(player["goals"] for player in visiting_players_stats)
 
-    # Actualizar estadísticas de los equipos
-    home_team["goals_for"] += home_score
-    home_team["goals_against"] += visiting_score
-    visiting_team["goals_for"] += visiting_score
-    visiting_team["goals_against"] += home_score
+    if home_score > visiting_score:
+        home_result, visiting_result = "win", "lose"
+    elif home_score < visiting_score:
+        home_result, visiting_result = "lose", "win"
+    else:
+        home_result = visiting_result = "draw"
 
-    home_team["cards"] += sum(player["cards"] for player in home_players_stats)
-    visiting_team["cards"] += sum(player["cards"] for player in visiting_players_stats)
+    update_team_stats(home_team, home_score, visiting_score, home_result)
+    update_team_stats(visiting_team, visiting_score, home_score, visiting_result)
 
-    # Actualizar estadísticas de los jugadores
     for stats in home_players_stats:
         player = next(p for p in all_players if p["player_id"] == stats["player_id"])
         update_player_stats(player, stats)
@@ -113,32 +129,16 @@ def generate_match(match_id, home_team, visiting_team, home_players, visiting_pl
         "home_team_id": home_team["team_id"],
         "visiting_team_id": visiting_team["team_id"],
         "date": date,
-        "score": [home_score, visiting_score],
-        "cards_home_team": sum(player["cards"] for player in home_players_stats),
-        "cards_visiting_team": sum(player["cards"] for player in visiting_players_stats),
-        "outlines_home_team": sum(player["outlines"] for player in home_players_stats),
-        "outlines_visiting_team": sum(player["outlines"] for player in visiting_players_stats),
-        "tackles_home_team": sum(player["tackles"] for player in home_players_stats),
-        "tackles_visiting_team": sum(player["tackles"] for player in visiting_players_stats),
-        "shots_on_target_home_team": sum(player["shots_on_target"] for player in home_players_stats),
-        "shots_on_target_visitng_team": sum(player["shots_on_target"] for player in visiting_players_stats),
-        "balls_lost_home_team": sum(player["balls_lost"] for player in home_players_stats),
-        "balls_lost_visiting_team": sum(player["balls_lost"] for player in visiting_players_stats),
-        "completed_passes_home_team": sum(player["completed_passes"] for player in home_players_stats),
-        "completed_passes_visiting_team": sum(player["completed_passes"] for player in visiting_players_stats),
-        "players_home_team": home_players_stats,
-        "players_visiting_team": visiting_players_stats
+        "score": [home_score, visiting_score]
     }
 
 # Generar datos
 def generate_data():
-    # Configuración
     num_teams = 10
     num_players_per_team = 15
     league_id = "0001"
     league_country = "Spain"
 
-    # Equipos y jugadores
     teams = []
     players = []
     for team_num in range(1, num_teams + 1):
@@ -148,23 +148,29 @@ def generate_data():
             players.append(generate_player(player_id, team_id))
         teams.append(generate_team(team_id, f"League{league_id}", league_country, player_ids))
 
-    # Liga
     league = generate_league(league_id, league_country, [team["team_id"] for team in teams])
 
-    # Generar combinaciones de partidos (todos contra todos)
     matches = []
     start_date = datetime(2024, 1, 1)
     match_num = 1
     for home_team, visiting_team in combinations(teams, 2):
-        for _ in range(2):  # Cada equipo juega como local y visitante
-            match_id = generate_id("match", match_num)
-            home_players = random.sample([p for p in players if p["team_id"] == home_team["team_id"]], 11)
-            visiting_players = random.sample([p for p in players if p["team_id"] == visiting_team["team_id"]], 11)
-            match_date = (start_date + timedelta(days=match_num * 7)).strftime("%Y-%m-%d")
-            matches.append(generate_match(match_id, home_team, visiting_team, home_players, visiting_players, match_date, players))
-            match_num += 1
+        match_id = generate_id("match", match_num)
+        home_players = random.sample([p for p in players if p["team_id"] == home_team["team_id"]], 11)
+        visiting_players = random.sample([p for p in players if p["team_id"] == visiting_team["team_id"]], 11)
+        match_date = (start_date + timedelta(days=match_num * 3)).strftime("%Y-%m-%d")
+        matches.append(generate_match(match_id, home_team, visiting_team, home_players, visiting_players, match_date, players))
+        match_num += 1
 
-    # Resultados
+    # Ordenar equipos por puntos y actualizar clasificación
+    sorted_teams = sorted(teams, key=lambda t: (t["points"], t["goals_for"] - t["goals_against"]), reverse=True)
+
+    # Actualizar el atributo `classification` de cada equipo
+    for rank, team in enumerate(sorted_teams, start=1):
+        team["classification"] = rank
+
+    # Actualizar la clasificación de la liga
+    league["classification_league"] = [team["team_id"] for team in sorted_teams]
+
     return {
         "players": players,
         "teams": teams,
@@ -172,7 +178,7 @@ def generate_data():
         "matches": matches
     }
 
-# Generar y guardar datos
+# Guardar los datos generados
 data = generate_data()
 with open("football_data.json", "w") as f:
     json.dump(data, f, indent=4)
