@@ -1,14 +1,27 @@
-from pymongo import MongoClient
+from pymongo import MongoClient, errors
 from typing import Generator
+import json
 
-
-from pymongo import MongoClient
 
 class MongoDB:
     def __init__(self, uri="mongodb://localhost:27017", db_name="football_analytics"):
+        """
+        Initializes a connection to a MongoDB instance.
+
+        Parameters:
+        - uri (str): The MongoDB connection URI. Defaults to "mongodb://localhost:27017".
+        - db_name (str): The name of the database to connect to. Defaults to "football_analytics".
+        """
         self.uri = uri
         self.db_name = db_name
-        self.client = MongoClient(self.uri)
+
+        try:
+            self.client = MongoClient(self.uri)
+            print("Successfully connected to MongoDB.")
+        except errors.ConnectionFailure as e:
+            print(f"Failed to connect to MongoDB: {e}")
+            raise
+
         self.db = self.client[self.db_name]
 
     def get_db(self) -> Generator:
@@ -22,16 +35,25 @@ class MongoDB:
         finally:
             client.close()
 
-    def insert_document(self, collection_name: str, document: dict):
+    def load_data(self, data) -> None:
         """
-        Inserta un documento en la colección especificada.
+        Loads all league information into the database from a JSON file.
+        
+        Parameters:
+        - data: Path to the JSON file containing league data.
         """
-        self.db[collection_name].insert_one(document)
-        print(f"Documento insertado en la colección '{collection_name}'.")
+        players_collection = self.db["players"]
+        teams_collection = self.db["teams"]
+        league_collection = self.db["league"]
+        matches_collection = self.db["matches"]
 
-    def insert_documents(self, collection_name: str, documents: list):
-        """
-        Inserta múltiples documentos en la colección especificada.
-        """
-        self.db[collection_name].insert_many(documents)
-        print(f"{len(documents)} documentos insertados en la colección '{collection_name}'.")
+        with open(data, "r") as f:
+            data = json.load(f)
+
+        
+        players_collection.insert_many(data["players"])
+        teams_collection.insert_many(data["teams"])
+        league_collection.insert_one(data["league"])
+        matches_collection.insert_many(data["matches"])
+
+        print("Data successfully inserted into MongoDB.")

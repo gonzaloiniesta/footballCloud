@@ -13,6 +13,5 @@ class Team(BaseModel):
     loses : int
     goals_for: int
     goals_against: int
-    cards: int
     players: List[str]
     
