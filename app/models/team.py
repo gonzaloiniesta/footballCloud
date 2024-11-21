@@ -8,7 +8,7 @@ class Team(BaseModel):
     country: str
     classification: int
     points: int
-    wins : InterruptedError
+    wins : int
     draws : int
     loses : int
     goals_for: int
