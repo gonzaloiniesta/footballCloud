@@ -10,17 +10,7 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: adminpassword  # Contraseña para MongoDB
     volumes:
       - mongodb_data:/data/db  # Volumen para persistir datos
-    network_mode: host  # Usa la red del host
-
-  mongo-express:
-    image: mongo-express:latest  # Cliente visual para MongoDB
-    container_name: mongo-express
-    restart: always
-    environment:
-      ME_CONFIG_MONGODB_ADMINUSERNAME: admin  # Usuario de administración
-      ME_CONFIG_MONGODB_ADMINPASSWORD: adminpassword  # Contraseña de administración
-      ME_CONFIG_MONGODB_SERVER: 127.0.0.1  # Conexión al servicio MongoDB en el host
-      ME_CONFIG_MONGODB_ENABLE_ADMIN: "true"  # Habilitar el modo de administrador
+      - ./init_data:/docker-entrypoint-initdb.d/
     network_mode: host  # Usa la red del host
 
 volumes:
