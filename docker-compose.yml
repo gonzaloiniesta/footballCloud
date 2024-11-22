@@ -2,16 +2,29 @@ version: '3.8'
 
 services:
   mongodb:
-    image: mongo:6.0  # Imagen de MongoDB
+    image: mongo:6.0
     container_name: mongodb
     restart: always
     environment:
-      MONGO_INITDB_ROOT_USERNAME: admin  # Usuario para MongoDB
-      MONGO_INITDB_ROOT_PASSWORD: adminpassword  # Contraseña para MongoDB
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: adminpassword
     volumes:
-      - mongodb_data:/data/db  # Volumen para persistir datos
-      - ./init_data:/docker-entrypoint-initdb.d/
-    network_mode: host  # Usa la red del host
+      - mongodb_data:/data/db
+    network_mode: host
+
+  init-python:
+    image: python:3.9
+    container_name: init_python
+    depends_on:
+      - mongodb
+    volumes:
+      - ./init_data:/app
+    working_dir: /app
+    command: >
+      sh -c "
+      pip install pymongo &&
+      python load_data.py"
+    network_mode: host
 
 volumes:
   mongodb_data:
