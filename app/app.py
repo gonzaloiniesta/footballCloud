@@ -1,5 +1,10 @@
 from fastapi import FastAPI
-from routers import get_leagues, get_matches, get_players, get_teams, create_league, create_match, create_player, create_team
+try:
+    from app.routers import get_leagues, get_matches, get_players, get_teams, create_league, create_match, create_player, create_team
+except ImportError as e:
+    print(f"Error al importar módulos: {e}")
+    raise
+
 
 app = FastAPI(
     title="Football Analytics API",
