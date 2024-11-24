@@ -30,10 +30,9 @@ class MongoDB:
         """
         client = MongoClient(self.uri)
         db = client[self.db_name]
-        try:
-            yield db
-        finally:
-            client.close()
+        
+        yield db
+        
 
     def load_data(self, data) -> None:
         """
@@ -44,7 +43,7 @@ class MongoDB:
         """
         players_collection = self.db["players"]
         teams_collection = self.db["teams"]
-        league_collection = self.db["league"]
+        league_collection = self.db["leagues"]
         matches_collection = self.db["matches"]
 
         with open(data, "r") as f:
@@ -53,7 +52,7 @@ class MongoDB:
         
         players_collection.insert_many(data["players"])
         teams_collection.insert_many(data["teams"])
-        league_collection.insert_one(data["league"])
+        league_collection.insert_one(data["leagues"])
         matches_collection.insert_many(data["matches"])
 
         print("Data successfully inserted into MongoDB.")

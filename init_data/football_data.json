@@ -7803,7 +7803,7 @@
             ]
         }
     ],
-    "league": {
+    "leagues": {
         "league_id": "0001",
         "name": "League0001",
         "country": "Spain",

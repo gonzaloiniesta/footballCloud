@@ -1,4 +1,4 @@
-from .matches import get_matches, create_match
-from .players import get_players, create_player
-from .teams import get_teams, create_team
-from .leagues import get_leagues, create_league
+from .routes_matches import router_match
+from .routes_players import router_player
+from .routes_teams import router_team
+from .routes_leagues import router_league
