@@ -28,7 +28,7 @@ def load_data(db):
         # Insertar datos en las colecciones
         db.players.insert_many(data["players"])
         db.teams.insert_many(data["teams"])
-        db.league.insert_one(data["leagues"])
+        db.leagues.insert_one(data["leagues"])
         db.matches.insert_many(data["matches"])
 
         print("Initial data loaded successfully into football_analytics")
