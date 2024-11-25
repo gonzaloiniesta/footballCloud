@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from routers import router_league, router_team, router_match, router_player
+from routers import router_league, router_teams, router_matches, router_players
 
 app = FastAPI(
     title="Football Analytics API",
@@ -7,21 +7,14 @@ app = FastAPI(
     version="1.0.0"
 )
 
-
 # Matches routes
-app.include_router(router_match, prefix="/matches", tags=["Matches"])
+app.include_router(router_matches)
 
 # Players routes
-app.include_router(router_player, prefix="/players", tags=["Players"])
+app.include_router(router_players)
 
 # Teams routes
-app.include_router(router_team, prefix="/teams", tags=["Teams"])
+app.include_router(router_teams)
 
 # Leagues routes
-app.include_router(router_league, prefix="/leagues", tags=["Leagues"])
-
-
-
-@app.get("/")
-async def root():
-    return {"message": "¡Bienvenido a Football Analytics API!"}
+app.include_router(router_league)

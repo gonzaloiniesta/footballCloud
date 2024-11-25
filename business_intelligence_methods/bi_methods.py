@@ -1,11 +1,9 @@
 import pandas as pd
-import json
-from mongodb import MongoDB  # Asegúrate de tener la clase MongoDB definida como antes
+import json, requests
 
 class BusinessIntelligenceMethods:
     def __init__(self):
-        # Inicializa una instancia de MongoDB
-        self.mongo = MongoDB()
+        pass
 
     def get_collection_as_dataframe(self, collection_name: str) -> pd.DataFrame:
         raise NotImplementedError("This method should be implemented by subclasses")

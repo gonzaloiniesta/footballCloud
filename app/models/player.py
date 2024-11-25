@@ -8,7 +8,7 @@ class Player(BaseModel):
     team_id: str
     total_goals: int
     total_cards: int
-    total_min: int
+    total_minutes: int
     total_outlines: int
     total_tackles: int
     total_shots_on_target: int
