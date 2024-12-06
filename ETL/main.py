@@ -16,10 +16,9 @@ scraper = LaLigaScraper(driver)
 # scraper.get_data(DataType.EFICIENCIA, output_file="player_efficiency_stats.csv", is_league=False, isFirst=True)
 # scraper.get_data(DataType.DISCIPLINA, output_file="player_discipline_stats.csv", is_league=False, isFirst=False)
 # scraper.get_data(DataType.ATAQUES, output_file="player_attack_stats.csv", is_league=False, isFirst=False)
-scraper.get_data(DataType.DEFENSIVA, output_file="player_defensive_stats.csv", is_league=False, isFirst=True)
-scraper.get_data(DataType.CLASICO, output_file="player_classic_stats.csv", is_league=False, isFirst=False)
+# scraper.get_data(DataType.DEFENSIVA, output_file="player_defensive_stats.csv", is_league=False, isFirst=True)
+# scraper.get_data(DataType.CLASICO, output_file="player_classic_stats.csv", is_league=False, isFirst=False)
 
-driver.quit()
 
 # League data extraction
 scraper.get_data(DataType.EFICIENCIA, output_file="league_efficiency_stats.csv", is_league=True, isFirst=True)
