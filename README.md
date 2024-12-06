@@ -1,6 +1,6 @@
-# Football Analytics
+# Football Cloud
 
-Football Analytics is a personal project aimed at applying my skills in programming, data analysis, and system development. This project focuses on the statistical analysis of football matches.
+Football Cloud is a personal project aimed at applying my skills in programming, data analysis, and system development. This project focuses on the statistical analysis of football matches.
 
 The system collects data from various sources, stores it in a NoSQL database in JSON format, and utilizes a microservice API to perform different analyses. These analyses are delivered through HTTP endpoints, providing access to detailed statistics and advanced metrics.
 
