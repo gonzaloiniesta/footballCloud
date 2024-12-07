@@ -1,6 +1,6 @@
 # 🏟️ **Football Cloud**
 
-**Football Cloud** is a personal project designed to apply and enhance my skills in microservices architecture design and backend application development. The primary goal is to create a platform that provides real football match data from the **Professional Football League (LaLiga)** for free via an API, using modern technologies and integrations to ensure efficient and accessible data flow.
+**Football Cloud** is a personal project designed to apply and enhance my skills in microservices architecture design and backend application development. The primary goal is to create a platform that provides real football match data from the **Spanish Professional Football League (LaLiga)** for free via an API, using modern technologies and integrations to ensure efficient and accessible data flow.
 
 The system automates the process of manually extracting data from LaLiga's official website, publishing the raw data to a **Kafka** topic. From there, two main microservices handle the processing and exposure of the data:
 
