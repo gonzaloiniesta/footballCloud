@@ -1,40 +1,60 @@
 # 🏟️ **Football Cloud**
 
-Football Cloud is a personal project aimed at applying my skills in programming, data analysis, and system development. This project focuses on the statistical analysis of football matches using modern microservices architecture, Kafka, and MongoDB.
+**Football Cloud** is a professional project focused on developing a microservices architecture for the collection, transformation, and delivery of football match data. The system automates the process of extracting information manually from LaLiga's official website, transforming it, and exposing it via an API for use in external applications and advanced analysis.
+
+The primary goal is to build a robust infrastructure that facilitates efficient data processing while ensuring modularity, scalability, and maintainability.
 
 ---
 
-## 📊 **System Architecture**
+## 🌐 **Project Description**
+
+The project focuses on three key stages:
+
+1. **Data Collection**:  
+   A dedicated service performs web scraping on LaLiga's official website, capturing match statistics manually.
+
+2. **Data Transformation**:  
+   The collected data is sent through Kafka, where an ETL microservice consumes, cleans, transforms, and stores it in a NoSQL database (MongoDB).
+
+3. **Data Delivery**:  
+   A RESTful API provides access to the stored data, allowing other applications or systems to efficiently query and use the information.
+
+---
+
+## 🏗️ **System Architecture**
 
 ![Football Cloud Architecture](images/architecture-footballCloud.png)
 
 ### **Workflow Explanation**
 
-1. **`Scraper-Service`**:
-   - **Function**: Collects football match data from sources like LaLiga's website using web scraping techniques.
-   - **Output**: Publishes the scraped data to a Kafka topic and optionally saves it as a local CSV file (`stats.csv`).
+1. **`Scraper-Service`**  
+   - **Function**: Collects football match data manually from LaLiga's official website using web scraping techniques with Selenium.  
+   - **Output**: Publishes the raw data (in bytes) to a Kafka topic and optionally saves it as a local CSV file (`stats.csv`).  
+   - **Execution**: Runs locally due to the requirement of having Google Chrome installed.
 
-2. **Kafka**:
-   - **Function**: Acts as a message broker to handle the communication between the `Scraper-Service` and the `ETL-Service`.
-   - **Topic**: Stores the scraped data temporarily, allowing the system to decouple the scraping process from data transformation.
+2. **Kafka**  
+   - **Function**: Acts as a message broker to handle asynchronous communication between the `Scraper-Service` and the `ETL-Service`.  
+   - **Topic**: Temporarily stores the raw data, allowing the scraping process to be decoupled from data transformation.
 
-3. **`ETL-Service`**:
-   - **Function**: Consumes data from the Kafka topic, transforms it (cleaning, formatting), and loads the processed data into MongoDB.
-   - **Data Storage**: Saves the cleaned and transformed data into a MongoDB database.
+3. **`ETL-Service`**  
+   - **Function**:  
+     - Consumes data from the Kafka topic.  
+     - Cleans, transforms, and formats the data.  
+     - Stores the processed data in MongoDB.
 
-4. **`API-Service`**:
-   - **Function**: Provides HTTP endpoints to query and retrieve the stored data from MongoDB.
-   - **Usage**: These endpoints can be used by frontend applications or external tools to display football statistics and insights.
+4. **`API-Service`**  
+   - **Function**: Provides HTTP endpoints to query and retrieve the stored data from MongoDB.  
+   - **Technology**: Developed with FastAPI for efficient and scalable access to the data.
 
 ---
 
 ## 🚀 **Features**
 
-- **Web Scraping**: Automated collection of football data using Selenium and Chrome Headless.
+- **Manual Web Scraping**: Collect football data using Selenium and Chrome Headless.
 - **Asynchronous Communication**: Kafka enables scalable and decoupled data processing.
-- **Data Transformation**: ETL pipeline ensures data is cleaned and ready for analysis.
-- **RESTful API**: FastAPI-powered service to access the data easily.
-- **Data Storage**: MongoDB stores data in flexible JSON format for efficient querying.
+- **Data Transformation**: ETL pipeline ensures data is cleaned and structured for analysis.
+- **RESTful API**: FastAPI provides easy access to the processed data.
+- **Flexible Data Storage**: MongoDB stores data in JSON format for efficient querying.
 
 ---
 
@@ -45,6 +65,7 @@ Football Cloud is a personal project aimed at applying my skills in programming,
 - **API Framework**: `FastAPI`
 - **Database**: `MongoDB`
 - **Containerization**: `Docker` and `Docker Compose`
+- **Programming Language**: `Python`
 - **Data Analysis**: `Pandas`
 - **Visualization**: (Future) `React` or `Vue.js`
 
