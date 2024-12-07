@@ -1,8 +1,18 @@
 # 🏟️ **Football Cloud**
 
-**Football Cloud** is a professional project focused on developing a microservices architecture for the collection, transformation, and delivery of football match data. The system automates the process of extracting information manually from LaLiga's official website, transforming it, and exposing it via an API for use in external applications and advanced analysis.
+**Football Cloud** is a personal project designed to apply and enhance my skills in microservices architecture design and backend application development. The primary goal is to create a platform that provides real football match data from the **Professional Football League (LaLiga)** for free via an API, using modern technologies and integrations to ensure efficient and accessible data flow.
 
-The primary goal is to build a robust infrastructure that facilitates efficient data processing while ensuring modularity, scalability, and maintainability.
+The system automates the process of manually extracting data from LaLiga's official website, publishing the raw data to a **Kafka** topic. From there, two main microservices handle the processing and exposure of the data:
+
+1. **Data Transformation Microservice (ETL-Service)**:  
+   - Consumes raw data from the Kafka topic.  
+   - Transforms, cleans, and stores the data in a **MongoDB** database.
+
+2. **REST API Microservice (API-Service)**:  
+   - Provides RESTful endpoints developed with **FastAPI**.  
+   - Allows external applications to query the processed data from MongoDB for analysis and visualization.
+
+This project facilitates free access to football data through a modular and maintainable platform, leveraging technologies like **Docker**, **Kafka**, **MongoDB**, and **FastAPI** to efficiently integrate different services.
 
 ---
 
