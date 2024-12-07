@@ -1,30 +1,59 @@
-# Football Cloud
+# 🏟️ **Football Cloud**
 
-Football Cloud is a personal project aimed at applying my skills in programming, data analysis, and system development. This project focuses on the statistical analysis of football matches.
+Football Cloud is a personal project aimed at applying my skills in programming, data analysis, and system development. This project focuses on the statistical analysis of football matches using modern microservices architecture, Kafka, and MongoDB.
 
-The system collects data from various sources, stores it in a NoSQL database in JSON format, and utilizes a microservice API to perform different analyses. These analyses are delivered through HTTP endpoints, providing access to detailed statistics and advanced metrics.
+---
 
-Additionally, the project includes an interactive frontend that consumes the API, offering an intuitive and visually appealing user experience. Football Analytics combines technology and football, creating a platform to delve deeper into the analysis of this exciting sport.
+## 📊 **System Architecture**
 
-## Features
+![Football Cloud Architecture](attachment:images/architecture-footballCloud.png)
 
-- **Data Collection**: Gathers data from multiple sources.
-- **NoSQL Database**: Stores data in MongoDB using JSON format for flexibility.
-- **API Microservice**: Built with FastAPI, it delivers efficient and scalable endpoints.
-- **Data Analysis**: Uses Pandas for advanced data manipulation and analysis.
-- **Interactive Frontend**: (Future development) A dynamic UI using JavaScript frameworks like React or Vue.js to visualize the data.
+### **Workflow Explanation**
 
-## Technologies Used
+1. **`Scraper-Service`**:
+   - **Function**: Collects football match data from sources like LaLiga's website using web scraping techniques.
+   - **Output**: Publishes the scraped data to a Kafka topic and optionally saves it as a local CSV file (`stats.csv`).
 
-- **API Framework**: Developed with FastAPI for high performance, ease of use, and automatic Swagger documentation generation.
-- **API Contract**: Designed using Stoplight.
-- **Data Storage**: MongoDB, a NoSQL database, efficiently manages JSON data.
-- **Data Analysis**: Pandas, a powerful Python library for data manipulation.
-- **Frontend**: (Future implementation) Developed with JavaScript frameworks such as React or Vue.js to create interactive and user-friendly interfaces.
+2. **Kafka**:
+   - **Function**: Acts as a message broker to handle the communication between the `Scraper-Service` and the `ETL-Service`.
+   - **Topic**: Stores the scraped data temporarily, allowing the system to decouple the scraping process from data transformation.
 
-## How to Run the Project
+3. **`ETL-Service`**:
+   - **Function**: Consumes data from the Kafka topic, transforms it (cleaning, formatting), and loads the processed data into MongoDB.
+   - **Data Storage**: Saves the cleaned and transformed data into a MongoDB database.
+
+4. **`API-Service`**:
+   - **Function**: Provides HTTP endpoints to query and retrieve the stored data from MongoDB.
+   - **Usage**: These endpoints can be used by frontend applications or external tools to display football statistics and insights.
+
+---
+
+## 🚀 **Features**
+
+- **Web Scraping**: Automated collection of football data using Selenium and Chrome Headless.
+- **Asynchronous Communication**: Kafka enables scalable and decoupled data processing.
+- **Data Transformation**: ETL pipeline ensures data is cleaned and ready for analysis.
+- **RESTful API**: FastAPI-powered service to access the data easily.
+- **Data Storage**: MongoDB stores data in flexible JSON format for efficient querying.
+
+---
+
+## 🛠️ **Technologies Used**
+
+- **Web Scraping**: `Selenium` with `Chrome Headless`
+- **Message Broker**: `Apache Kafka`
+- **API Framework**: `FastAPI`
+- **Database**: `MongoDB`
+- **Containerization**: `Docker` and `Docker Compose`
+- **Data Analysis**: `Pandas`
+- **Visualization**: (Future) `React` or `Vue.js`
+
+---
+
+## 🚀 **How to Run the Project**
 
 ### 1. Clone the Repository
+
 ```bash
-git clone https://github.com/your-username/football-analytics.git
-cd football-analytics
+git clone https://github.com/your-username/football-cloud.git
+cd football-cloud
