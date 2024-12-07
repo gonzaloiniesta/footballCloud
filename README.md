@@ -6,7 +6,7 @@ Football Cloud is a personal project aimed at applying my skills in programming,
 
 ## 📊 **System Architecture**
 
-![Football Cloud Architecture](attachment:images/architecture-footballCloud.png)
+![Football Cloud Architecture](images/architecture-footballCloud.png)
 
 ### **Workflow Explanation**
 
