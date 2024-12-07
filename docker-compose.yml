@@ -12,19 +12,5 @@ services:
       - mongodb_data:/data/db
     network_mode: host
 
-  init-python:
-    image: python:3.9
-    container_name: init_python
-    depends_on:
-      - mongodb
-    volumes:
-      - ./init_data:/app
-    working_dir: /app
-    command: >
-      sh -c "
-      pip install pymongo &&
-      python load_data.py"
-    network_mode: host
-
 volumes:
   mongodb_data:
