@@ -1,7 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
-from extract import LaLigaScraper, DataType
+from technologics_classes import LaLigaScraper, DataType
 
 
 options = Options()
