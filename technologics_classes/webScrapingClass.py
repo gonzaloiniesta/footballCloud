@@ -30,7 +30,7 @@ class LaLigaScraper:
             DataType.DEFENSIVA: '//*[@id="__next"]/div[6]/div[1]/div/div[2]/div[2]/div/ul/li[5]'
         }
 
-    def get_data(self, data_type: DataType, output_file: str, is_league: bool = False, isFirst: bool = False):
+    def get_data(self, data_type: DataType, is_league: bool = False, isFirst: bool = False, output_file=None):
         """
         Generic method to extract LaLiga's information.
         :param data_type: Type of data (DataType Enum).
@@ -103,6 +103,8 @@ class LaLigaScraper:
                 break
 
         df = pd.DataFrame(all_data, columns=column_names)
-        print(df.info())
-        df.to_csv(output_file, index=False)
+
+        if output_file is not None:
+            df.to_csv(output_file, index=False)
+
         return df

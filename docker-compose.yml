@@ -10,21 +10,50 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: adminpassword
     volumes:
       - mongodb_data:/data/db
-    network_mode: host
+    ports:
+      - "27017:27017"
 
-  init-python:
-    image: python:3.9
-    container_name: init_python
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    container_name: zookeeper
+    restart: always
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - "2181:2181"
+
+  kafka:
+    image: confluentinc/cp-kafka:latest
+    container_name: kafka
+    restart: always
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092,PLAINTEXT_INTERNAL://kafka:29092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_INTERNAL:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT_INTERNAL
+    ports:
+      - "9092:9092"
+      - "29092:29092"
     depends_on:
-      - mongodb
-    volumes:
-      - ./init_data:/app
-    working_dir: /app
-    command: >
-      sh -c "
-      pip install pymongo &&
-      python load_data.py"
-    network_mode: host
+      - zookeeper
+
+  akhq:
+    image: tchiotludo/akhq:latest
+    container_name: akhq
+    restart: always
+    environment:
+      AKHQ_CONFIGURATION: |
+        akhq:
+          connections:
+            docker-kafka:
+              properties:
+                bootstrap.servers: "kafka:29092"
+    ports:
+      - "8080:8080"
+    depends_on:
+      - kafka
 
 volumes:
   mongodb_data:

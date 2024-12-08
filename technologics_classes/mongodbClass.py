@@ -3,8 +3,8 @@ from typing import Generator
 import json
 
 
-class MongoDB:
-    def __init__(self, uri="mongodb://admin:adminpassword@localhost:27017/", db_name="football_analytics"):
+class MongoDBFootballCloud:
+    def __init__(self, uri="mongodb://admin:adminpassword@localhost:27017/", db_name="football_cloud"):
         """
         Initializes a connection to a MongoDB instance.
 
