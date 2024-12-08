@@ -103,6 +103,5 @@ class LaLigaScraper:
                 break
 
         df = pd.DataFrame(all_data, columns=column_names)
-        print(df.info())
         df.to_csv(output_file, index=False)
         return df

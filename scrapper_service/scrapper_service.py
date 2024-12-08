@@ -3,9 +3,9 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from technologics_classes.webScrapingClass import LaLigaScraper, DataType
 from technologics_classes.kafkaProducerClass import KafkaProducerFootballCloud
+from kafka.errors import KafkaError
 import json
 
-# Configuración del WebDriver de Selenium
 def setup_driver():
     options = Options()
     # options.add_argument('--headless')  # Descomentar para ejecutar sin interfaz gráfica
@@ -13,23 +13,50 @@ def setup_driver():
     driver = webdriver.Chrome(service=driver_service, options=options)
     return driver
 
-# Función para publicar el DataFrame en Kafka
-def publish_dataframe_to_kafka(producer, df, data_type):
+def publish_dataframe_to_kafka(producer: KafkaProducerFootballCloud, df, data_type, topic):
     """
-    Publica cada fila del DataFrame como un mensaje en Kafka.
+    Publishes each row of the DataFrame as a JSON message to Kafka.
 
-    :param producer: Instancia de KafkaProducerFootballCloud.
-    :param df: DataFrame de pandas con los datos a enviar.
-    :param data_type: Tipo de datos (DataType Enum) para agregar metadatos.
+    :param producer: Instance of KafkaProducerFootballCloud.
+    :param df: DataFrame with the data to send.
+    :param data_type: DataType Enum to add metadata.
     """
-    for _, row in df.iterrows():
-        message = {
-            "data_type": data_type.value,
-            "data": row.to_dict()
-        }
-        producer.publish(message)
-    print(f"Published data for {data_type.value} to Kafka.")
+    try:
+        for _, row in df.iterrows():
+            # Convert each row to a dictionary and then to a JSON string
+            message = {
+                "data_type": data_type.value,
+                "data": row.to_dict()
+            }
+            producer.publish(json.dumps(message), topic)
+            print(f"📤 Sent row to Kafka: {message}")
 
+        print(f"✅ Published all data for {data_type.value} to Kafka.")
+
+    except Exception as e:
+        print(f"❌ Error while publishing data for {data_type.value}: {e}")
+
+
+def extract_and_publish(scraper, producer, data_types, is_league, prefix, topic):
+    """
+    Extracts data using the scraper and publishes it to Kafka.
+
+    :param scraper: Instance of LaLigaScraper.
+    :param producer: Instance of KafkaProducerFootballCloud.
+    :param data_types: List of DataTypes to extract.
+    :param is_league: Boolean indicating if the data is for leagues (True) or players (False).
+    :param prefix: Prefix for the output file names (e.g., 'league' or 'player').
+    """
+    for index, data_type in enumerate(data_types):
+        is_first = index == 0
+        output_file = f"{prefix}_{data_type.name.lower()}_stats.csv"
+        
+        try:
+            df = scraper.get_data(data_type, output_file=output_file, is_league=is_league, isFirst=is_first)
+            print(df)
+            publish_dataframe_to_kafka(producer, df, data_type, topic)
+        except Exception as e:
+            print(f"❌ Error occurred while processing {data_type.value}: {e}")
 
 
 
@@ -39,52 +66,37 @@ if __name__ == "__main__":
     driver = setup_driver()
     scraper = LaLigaScraper(driver)
 
-  
     KAFKA_URL = "localhost"
     KAFKA_PORT = 9092
-    KAFKA_TOPIC = "football-data"
-
-    producer = KafkaProducerFootballCloud(KAFKA_URL, KAFKA_PORT, KAFKA_TOPIC)
+    KAFKA_TOPIC_ = "clasica_league"
 
     try:
-        
-        # League Data
-        df_efficiency = scraper.get_data(DataType.EFICIENCIA, output_file="league_efficiency_stats.csv", is_league=True, isFirst=True)
-        publish_dataframe_to_kafka(producer, df_efficiency, DataType.EFICIENCIA)
+        producer = KafkaProducerFootballCloud(KAFKA_URL, KAFKA_PORT)
+        print("✅ Successfully connected to Kafka.")
+    except KafkaError as e:
+        print(f"❌ Error while connecting to Kafka: {e}")
+    except Exception as e:
+        print(f"❌ An unexpected error occurred: {e}")
 
-        df_discipline = scraper.get_data(DataType.DISCIPLINA, output_file="league_discipline_stats.csv", is_league=True, isFirst=False)
-        publish_dataframe_to_kafka(producer, df_discipline, DataType.DISCIPLINA)
+    print()
 
-        df_attacks = scraper.get_data(DataType.ATAQUES, output_file="league_attack_stats.csv", is_league=True, isFirst=False)
-        publish_dataframe_to_kafka(producer, df_attacks, DataType.ATAQUES)
+    data_types = [
+        DataType.EFICIENCIA,
+        # DataType.DISCIPLINA,
+        # DataType.ATAQUES,
+        # DataType.DEFENSIVA,
+        # DataType.CLASICO
+    ]
 
-        df_defensive = scraper.get_data(DataType.DEFENSIVA, output_file="league_defensive_stats.csv", is_league=True, isFirst=False)
-        publish_dataframe_to_kafka(producer, df_defensive, DataType.DEFENSIVA)
+    try:
+        # Extract and publish league data
+        extract_and_publish(scraper, producer, data_types, is_league=True, prefix="league", topic="clasica_league")
 
-        df_classic = scraper.get_data(DataType.CLASICO, output_file="league_classic_stats.csv", is_league=True, isFirst=False)
-        publish_dataframe_to_kafka(producer, df_classic, DataType.CLASICO)
-
-
-
-
-        # Players Data
-        df_efficiency = scraper.get_data(DataType.EFICIENCIA, output_file="player_efficiency_stats.csv", is_league=False, isFirst=True)
-        publish_dataframe_to_kafka(producer, df_efficiency, DataType.EFICIENCIA)
-
-        df_discipline = scraper.get_data(DataType.DISCIPLINA, output_file="player_discipline_stats.csv", is_league=False, isFirst=False)
-        publish_dataframe_to_kafka(producer, df_discipline, DataType.DISCIPLINA)
-
-        df_attacks = scraper.get_data(DataType.ATAQUES, output_file="player_attack_stats.csv", is_league=False, isFirst=False)
-        publish_dataframe_to_kafka(producer, df_attacks, DataType.ATAQUES)
-
-        df_defensive = scraper.get_data(DataType.DEFENSIVA, output_file="player_defensive_stats.csv", is_league=False, isFirst=False)
-        publish_dataframe_to_kafka(producer, df_defensive, DataType.DEFENSIVA)
-
-        df_classic = scraper.get_data(DataType.CLASICO, output_file="player_classic_stats.csv", is_league=False, isFirst=False)
-        publish_dataframe_to_kafka(producer, df_classic, DataType.CLASICO)
+        # Extract and publish player data
+        # extract_and_publish(scraper, producer, data_types, is_league=False, prefix="player")
 
     except Exception as e:
-        print(f"An error occurred: {e}")
+        print(f"❌ An unexpected error occurred: {e}")
 
     finally:
         driver.quit()
