@@ -14,7 +14,7 @@ class KafkaProducerFootballCloud:
         self.bootstrap_servers = f"{kafka_url}:{kafka_port}"
         self.producer = KafkaProducer(
             bootstrap_servers=self.bootstrap_servers,
-            key_serializer=lambda k: k.encode('utf-8'),
+            key_serializer=lambda k: json.dumps(k).encode('utf-8'),
             value_serializer=lambda v: json.dumps(v).encode('utf-8')
         )
 
@@ -28,7 +28,7 @@ class KafkaProducerFootballCloud:
 
             future = self.producer.send(topic=topic, key=key, value=message)
             record_metadata = future.get(timeout=10)
-            print(f"📤 Message sent to {record_metadata.topic} [Partition: {record_metadata.partition}]")
+            print(f"📤 Message sent to topic: {record_metadata.topic}.")
         except KafkaError as e:
             print(f"❌ Error sending the message: {e}")
 
