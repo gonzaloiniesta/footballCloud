@@ -3,6 +3,7 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from integrations import LaLigaScraper, KafkaProducerFootballCloud, DataType
 from pandas import DataFrame
+import unicodedata
 
 def setup_driver():
     options = Options()
@@ -13,30 +14,39 @@ def setup_driver():
 
 def remove_accents(text: str):
     """Remove accents from a given string."""
-    return text.encode('ascii', 'ignore').decode('utf-8')
+    normalized = unicodedata.normalize('NFD', text)
+    return ''.join(char for char in normalized if unicodedata.category(char) != 'Mn')
 
 def publish_dataframe_to_kafka(producer, df: DataFrame, data_type, topic: str, isLeague: bool):
     """Publishes each row of the DataFrame as a JSON message to a specified Kafka topic."""
-    try:
-        for _, row in df.iterrows():
-            msg = row.to_dict()
+    
+    for _, row in df.iterrows():
+        msg = row.to_dict()
+
+        if isLeague:
             key = {
-                "team": remove_accents(str(msg["EQUIPO"])) if isLeague else remove_accents(msg["NOMBRE"]),
-                "stats": data_type.value
-            }
-            producer.publish(topic=topic, key=key, message=msg)
-    except Exception as e:
-        print(f"❌ Error while publishing data: {e}")
+                "team": remove_accents(str(msg["EQUIPO"])),
+                "stats": remove_accents(data_type.value)
+                }
+        else:
+            key = {
+                "player": remove_accents(str(msg["NOMBRE"])),
+                "stats": remove_accents(data_type.value)
+                }
+
+        producer.publish(topic=topic, key=key, message=msg)
+
+
+
 
 def extract_and_publish(scraper, producer, data_types, is_league, prefix, topic):
     """Extracts data using the scraper and publishes it to a specified Kafka topic."""
     for index, data_type in enumerate(data_types):
         is_first = index == 0
-        try:
-            df = scraper.get_data(data_type, is_league=is_league, isFirst=is_first)
-            publish_dataframe_to_kafka(producer=producer, df=df, data_type=data_type, topic=topic, isLeague=is_league)
-        except Exception as e:
-            print(f"❌ Error occurred while processing {data_type.value}: {e}")
+        df = scraper.get_data(data_type, is_league=is_league, isFirst=is_first)
+        publish_dataframe_to_kafka(producer=producer, df=df, data_type=data_type, topic=topic, isLeague=is_league)
+
+
 
 if __name__ == "__main__":
     driver = setup_driver()

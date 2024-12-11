@@ -1,7 +1,7 @@
 from kafka import KafkaProducer
 from kafka.errors import KafkaError
 from integrations import PublisherBrokerInterface
-import json
+import json, sys
 
 class KafkaProducerFootballCloud(PublisherBrokerInterface):
     def __init__(self, kafka_url, kafka_port):
@@ -12,11 +12,20 @@ class KafkaProducerFootballCloud(PublisherBrokerInterface):
         :param kafka_port: The port of the Kafka server.
         """
         self.bootstrap_servers = f"{kafka_url}:{kafka_port}"
-        self.producer = KafkaProducer(
-            bootstrap_servers=self.bootstrap_servers,
-            key_serializer=lambda k: json.dumps(k).encode('utf-8'),
-            value_serializer=lambda v: json.dumps(v).encode('utf-8')
-        )
+
+        try:
+            self.producer = KafkaProducer(
+                bootstrap_servers=self.bootstrap_servers,
+                key_serializer=lambda k: json.dumps(k).encode('utf-8'),
+                value_serializer=lambda v: json.dumps(v).encode('utf-8')
+            )
+            print(f"✅ Successfully connected to Kafka at {self.bootstrap_servers}.")
+        except KafkaError as e:
+            print(f"❌ Failed to connect to Kafka: {e}")
+            sys.exit(1)
+        except Exception as e:
+            print(f"❌ An unexpected error occurred while connecting to Kafka: {e}")
+            sys.exit(1)
 
     def publish(self, key: dict, message: dict, topic: str):
         """
