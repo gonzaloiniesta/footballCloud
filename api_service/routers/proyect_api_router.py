@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Depends
-from mongodb import MongoDB
+from technologics_classes import MongoDBFootballCloud
 
 class ProyectAPIRouter(APIRouter):
     """
@@ -12,7 +12,7 @@ class ProyectAPIRouter(APIRouter):
 
     @staticmethod
     def _get_db():
-        db = MongoDB().get_db()
+        db = MongoDBFootballCloud().get_db()
         return next(db)
 
     def add_api_route(self, path, endpoint, **kwargs):

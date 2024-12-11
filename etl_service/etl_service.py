@@ -1,5 +1,5 @@
 import json
-from pymongo import MongoClient
+from technologics_classes import KafkaConsumerFootballCloud
 import time
 
 USERNAME = "admin"
@@ -7,35 +7,10 @@ PASSWORD = "adminpassword"
 HOST = "localhost"
 PORT = 27017
 DB_NAME = "football_analytics"
+KAFKA_URL = "localhost"
+KAFKA_PORT = 9092
 
-def connect_to_mongo():
-    while True:
-        try:
-            client = MongoClient(f"mongodb://{USERNAME}:{PASSWORD}@{HOST}:{PORT}/?authSource=admin")
-            db = client[DB_NAME]
-            print("Connected to MongoDB successfully.")
-            return db
-        except Exception as e:
-            print(f"Failed to connect to MongoDB: {e}. Retrying...")
-            time.sleep(5)
-
-def load_data(db):
-    file_path = "football_data.json"
-    try:
-        with open(file_path, "r") as f:
-            data = json.load(f)
-
-        # Insertar datos en las colecciones
-        db.players.insert_many(data["players"])
-        db.teams.insert_many(data["teams"])
-        db.leagues.insert_one(data["leagues"])
-        db.matches.insert_many(data["matches"])
-
-        print("Initial data loaded successfully into football_analytics")
-    except Exception as e:
-        print(f"An error occurred while loading data: {e}")
-
-# Ejecutar el script
 if __name__ == "__main__":
-    db = connect_to_mongo()
-    load_data(db)
+    consumer = KafkaConsumerFootballCloud(kafka_url=KAFKA_URL, kafka_port=KAFKA_PORT, topic="league_stats")
+
+    consumer.subscribe()

@@ -48,7 +48,7 @@ def publish_dataframe_to_kafka(producer: KafkaProducerFootballCloud, df: DataFra
                 }
             else:
                 key = {
-                    "player": msg["NOMBRE"],
+                    "player": remove_accents(msg["NOMBRE"]),
                     "stats": data_type.value 
                 }
 
@@ -100,8 +100,6 @@ if __name__ == "__main__":
         print(f"❌ Error while connecting to Kafka: {e}")
     except Exception as e:
         print(f"❌ An unexpected error occurred: {e}")
-
-    print()
 
     data_types = [
         DataType.EFICIENCIA,

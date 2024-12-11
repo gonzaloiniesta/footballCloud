@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from routers import router_league, router_teams, router_matches, router_players
+from routers import router_matches
 
 app = FastAPI(
     title="Football Analytics API",
@@ -11,10 +11,10 @@ app = FastAPI(
 app.include_router(router_matches)
 
 # Players routes
-app.include_router(router_players)
+# app.include_router(router_players)
 
 # Teams routes
-app.include_router(router_teams)
+# app.include_router(router_teams)
 
 # Leagues routes
-app.include_router(router_league)
+# app.include_router(router_league)

@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException, Query, Path
 from typing import List, Optional
 from models import Match
-from mongodb import MongoDB
+from technologics_classes import MongoDBFootballCloud
 
 router_matches = APIRouter(
     prefix="/matches",
@@ -13,7 +13,7 @@ router_matches = APIRouter(
 )
 
 def get_db():
-    db = MongoDB().get_db()
+    db = MongoDBFootballCloud().get_db()
     return next(db)
 
 
