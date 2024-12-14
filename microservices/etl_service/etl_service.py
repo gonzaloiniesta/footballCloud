@@ -1,7 +1,6 @@
-import json
-from integrations import KafkaConsumerFootballCloud
-import time
+from integrations import MessagingQueueFactory
 
+QUEUE_TYPE = 'Kafka'
 USERNAME = "admin"
 PASSWORD = "adminpassword"
 HOST = "localhost"
@@ -11,6 +10,9 @@ KAFKA_URL = "localhost"
 KAFKA_PORT = 9092
 
 if __name__ == "__main__":
-    consumer = KafkaConsumerFootballCloud(kafka_url=KAFKA_URL, kafka_port=KAFKA_PORT, topic="league_stats")
 
-    consumer.subscribe()
+    def imprime(k, v):
+        print(f'Key: {k}, Value: {v}')
+
+    consumer = MessagingQueueFactory(queue_type=QUEUE_TYPE, url=KAFKA_URL, port=KAFKA_PORT, topic="league_stats")
+    consumer.create().subscribe(imprime)

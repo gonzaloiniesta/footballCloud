@@ -1,2 +1,1 @@
-from .kafka_consumer import KafkaConsumerFootballCloud
-from .kafka_producer import KafkaProducerFootballCloud
+from .kafka_broker import KafkaConsumerFootballCloud, KafkaProducerFootballCloud
