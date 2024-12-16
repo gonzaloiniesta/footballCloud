@@ -1,4 +1,4 @@
-from integrations import MessagingQueueFactory
+from integrations import MessagingQueueFactory, DataTransformer
 
 QUEUE_TYPE = 'Kafka'
 USERNAME = "admin"
@@ -11,8 +11,8 @@ KAFKA_PORT = 9092
 
 if __name__ == "__main__":
 
-    def imprime(k, v):
-        print(f'Key: {k}, Value: {v}')
-
-    consumer = MessagingQueueFactory(queue_type=QUEUE_TYPE, url=KAFKA_URL, port=KAFKA_PORT, topic="league_stats")
-    consumer.create().subscribe(imprime)
+    trasformer = DataTransformer()
+    consumer = MessagingQueueFactory(queue_type=QUEUE_TYPE, url=KAFKA_URL, port=KAFKA_PORT, topic="league_stats", consumer_group="test1234")
+    for k, v in consumer.create().subscribe():
+        print("Transformado:")
+        print(trasformer.transform(k, v))

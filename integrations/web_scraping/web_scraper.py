@@ -15,11 +15,11 @@ class DataType(Enum):
     ATAQUES = "Ataques"
     DEFENSIVA = "Defensiva"
 
-class LaLigaScraper:
+class FootballScraper:
     def __init__(self, driver):
         """
         Constructor to initialize the scraper with the Selenium WebDriver.
-        :param driver: Instance of the Selenium WebDriver.
+        -param driver: Instance of the Selenium WebDriver.
         """
         self.driver = driver
         self.base_url = "https://www.laliga.com/estadisticas-avanzadas"
@@ -33,9 +33,9 @@ class LaLigaScraper:
     def get_data(self, data_type: DataType, is_league: bool = False, isFirst: bool = False, output_file=None):
         """
         Generic method to extract LaLiga's information.
-        :param data_type: Type of data (DataType Enum).
-        :param output_file: Name of the output CSV file.
-        :param is_league: Indicates whether the data is for the league (True) or players (False).
+        -param data_type: Type of data (DataType Enum).
+        -param output_file: Name of the output CSV file.
+        -param is_league: Indicates whether the data is for the league (True) or players (False).
         """
         self.driver.get(self.base_url)
         all_data = []

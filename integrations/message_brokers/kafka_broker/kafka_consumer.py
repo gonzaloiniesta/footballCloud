@@ -34,7 +34,7 @@ class KafkaConsumerFootballCloud(ConsumerBrokerInterface):
             print(f"❌ An unexpected error occurred while connecting to Kafka: {e}")
             sys.exit(1)
 
-    def subscribe(self, callback):
+    def subscribe(self):
         """
         Subscribes to the topic and consumes messages.
 
@@ -43,7 +43,7 @@ class KafkaConsumerFootballCloud(ConsumerBrokerInterface):
         print(f"Listening for messages on topic '{self.topic}'...")
         try:
             for message in self.consumer:
-                callback(message.key, message.value)
+              yield message.key, message.value
         except KeyboardInterrupt:
             print("❌ Subscription terminated by the user.")
         except KafkaError as e:

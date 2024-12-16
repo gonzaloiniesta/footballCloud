@@ -1,1 +1,1 @@
-from .web_scraper import LaLigaScraper, DataType
+from .web_scraper import FootballScraper, DataType

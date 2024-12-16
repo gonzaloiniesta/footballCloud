@@ -1,7 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
-from integrations import LaLigaScraper, KafkaProducerFootballCloud, DataType
+from integrations import FootballScraper, KafkaProducerFootballCloud, DataType
 from pandas import DataFrame
 import unicodedata
 
@@ -50,7 +50,7 @@ def extract_and_publish(scraper, producer, data_types, is_league, prefix, topic)
 
 if __name__ == "__main__":
     driver = setup_driver()
-    scraper = LaLigaScraper(driver)
+    scraper = FootballScraper(driver)
 
     KAFKA_URL = "localhost"
     KAFKA_PORT = 9092
