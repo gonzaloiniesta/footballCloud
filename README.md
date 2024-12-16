@@ -43,7 +43,7 @@ The project focuses on three key stages:
 
 ## 🏗️ **System Architecture**
 
-![Football Cloud Architecture](arquitectura_fclouf.png)
+![Football Cloud Architecture](images/architecture.png)
 
 ### **Workflow Explanation**
 
