@@ -58,11 +58,11 @@ if __name__ == "__main__":
     producer = KafkaProducerFootballCloud(KAFKA_URL, KAFKA_PORT)
 
     data_types = [
-        DataType.EFICIENCIA,
-        DataType.DISCIPLINA,
+        # DataType.EFICIENCIA,
+        # DataType.DISCIPLINA,
         DataType.ATAQUES,
-        DataType.DEFENSIVA,
-        DataType.CLASICO
+        # DataType.DEFENSIVA,
+        # DataType.CLASICO
     ]
 
     try:
