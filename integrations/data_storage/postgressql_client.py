@@ -68,30 +68,32 @@ class PostgreSQLFootballCloud:
 
     def insert_statistics(self, table_name: str, id_name: str, entity_id: int, data: Dict[str, Any]) -> None:
         """
-        Insert statistics into the specified table.
-
-        Parameters:
-        - table_name (str): The name of the table.
-        - id_name (str): The name of the ID column (team_id or player_id).
-        - entity_id (int): The ID of the team or player.
-        - data (dict): The statistics data to insert.
+        Insert statistics into the specified table, or update existing records if they already exist.
         """
         try:
             with self.connection.cursor() as cursor:
                 columns = list(data.keys())
                 values = list(data.values())
                 placeholders = ", ".join(["%s"] * len(columns))
+                updates = ", ".join(f"{col} = EXCLUDED.{col}" for col in columns)
 
-                query = sql.SQL("INSERT INTO {} ({}, {}) VALUES (%s, {})").format(
+                query = sql.SQL("""
+                    INSERT INTO {} ({}, {}) 
+                    VALUES (%s, {}) 
+                    ON CONFLICT ({}) DO UPDATE 
+                    SET {}
+                """).format(
                     sql.Identifier(table_name),
                     sql.Identifier(id_name),
                     sql.SQL(", ").join(map(sql.Identifier, columns)),
                     sql.SQL(placeholders),
+                    sql.Identifier(id_name),
+                    sql.SQL(updates),
                 )
                 cursor.execute(query, [entity_id] + values)
-                print(f"✅ Statistics inserted into '{table_name}' for {id_name}={entity_id}.")
+                print(f"✅ Statistics inserted or updated in '{table_name}' for {id_name}={entity_id}.")
         except psycopg2.Error as e:
-            print(f"❌ Error inserting statistics into '{table_name}': {e}")
+            print(f"❌ Error inserting or updating statistics in '{table_name}': {e}")
             raise
 
     def process_player_statistics(self, key: Dict[str, Any], value: Dict[str, Any]) -> None:
@@ -102,8 +104,8 @@ class PostgreSQLFootballCloud:
         - key (dict): Key containing 'player' and 'stats' type.
         - value (dict): The statistics data.
         """
-        player_name = value['name']
-        team_name = value['team']
+        player_name = value.pop('name', None)
+        team_name = value.pop('team', None)
         player_id = self.get_player_id(player_name, team_name)
 
         table_map = {
@@ -118,7 +120,7 @@ class PostgreSQLFootballCloud:
         if stats_table:
             self.insert_statistics(stats_table, 'player_id', player_id, value)
         else:
-            print(f"⚠️ Unknown statistics type: {key['stats']} for player '{player_name}'.")
+            print(f"Unknown statistics type: {key['stats']} for player '{player_name}'.")
 
     def process_team_statistics(self, key: Dict[str, Any], value: Dict[str, Any]) -> None:
         """
@@ -143,5 +145,5 @@ class PostgreSQLFootballCloud:
         if stats_table:
             self.insert_statistics(stats_table, 'team_id', team_id, value)
         else:
-            print(f"⚠️ Unknown statistics type: {key['stats']} for team '{team_name}'.")
+            print(f"Unknown statistics type: {key['stats']} for team '{team_name}'.")
 

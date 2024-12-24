@@ -20,16 +20,15 @@ CREATE TABLE leagues (
     name VARCHAR(100) NOT NULL
 );
 
-
 CREATE TABLE teams (
     team_id SERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
-    league_id INT REFERENCES leagues(league_id)
+    league_id INT REFERENCES leagues(league_id) ON DELETE CASCADE
 );
 
 CREATE TABLE attack_statistics (
     id SERIAL PRIMARY KEY,
-    team_id INT REFERENCES teams(team_id),
+    team_id INT REFERENCES teams(team_id) ON DELETE CASCADE,
     shots INT,
     shots_on_target INT,
     assists INT,
@@ -48,7 +47,7 @@ CREATE TABLE attack_statistics (
 
 CREATE TABLE discipline_statistics (
     id SERIAL PRIMARY KEY,
-    team_id INT REFERENCES teams(team_id),
+    team_id INT REFERENCES teams(team_id) ON DELETE CASCADE,
     yellow_cards INT,
     red_cards INT,
     second_yellows INT,
@@ -63,7 +62,7 @@ CREATE TABLE discipline_statistics (
 
 CREATE TABLE classic_statistics (
     id SERIAL PRIMARY KEY,
-    team_id INT REFERENCES teams(team_id),
+    team_id INT REFERENCES teams(team_id) ON DELETE CASCADE,
     matches_won INT,
     matches_lost INT,
     matches_drawn INT,
@@ -74,7 +73,7 @@ CREATE TABLE classic_statistics (
 
 CREATE TABLE defensive_statistics (
     id SERIAL PRIMARY KEY,
-    team_id INT REFERENCES teams(team_id),
+    team_id INT REFERENCES teams(team_id) ON DELETE CASCADE,
     blocks INT,
     interceptions INT,
     recoveries INT,
@@ -90,7 +89,7 @@ CREATE TABLE defensive_statistics (
 
 CREATE TABLE efficiency_statistics (
     id SERIAL PRIMARY KEY,
-    team_id INT REFERENCES teams(team_id),
+    team_id INT REFERENCES teams(team_id) ON DELETE CASCADE,
     corners_taken INT,
     tackles INT,
     duels INT,
@@ -112,12 +111,11 @@ CREATE TABLE efficiency_statistics (
 CREATE TABLE players (
     player_id SERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
-    team_id INT REFERENCES teams(team_id)
+    team_id INT REFERENCES teams(team_id) ON DELETE CASCADE
 );
 
 CREATE TABLE player_discipline_statistics (
-    id SERIAL PRIMARY KEY,
-    player_id INT REFERENCES players(player_id),
+    player_id INT PRIMARY KEY REFERENCES players(player_id) ON DELETE CASCADE,
     yellow_cards INT,
     red_cards INT,
     second_yellows INT,
@@ -131,8 +129,7 @@ CREATE TABLE player_discipline_statistics (
 );
 
 CREATE TABLE player_classic_statistics (
-    id SERIAL PRIMARY KEY,
-    player_id INT REFERENCES players(player_id),
+    player_id INT PRIMARY KEY REFERENCES players(player_id) ON DELETE CASCADE,
     minutes_played INT,
     matches_played INT,
     complete_matches INT,
@@ -145,8 +142,7 @@ CREATE TABLE player_classic_statistics (
 );
 
 CREATE TABLE player_defensive_statistics (
-    id SERIAL PRIMARY KEY,
-    player_id INT REFERENCES players(player_id),
+    player_id INT PRIMARY KEY REFERENCES players(player_id) ON DELETE CASCADE,
     blocks INT,
     interceptions INT,
     recoveries INT,
@@ -161,8 +157,7 @@ CREATE TABLE player_defensive_statistics (
 );
 
 CREATE TABLE player_efficiency_statistics (
-    id SERIAL PRIMARY KEY,
-    player_id INT REFERENCES players(player_id),
+    player_id INT PRIMARY KEY REFERENCES players(player_id) ON DELETE CASCADE,
     corners_taken INT,
     tackles INT,
     duels INT,
@@ -182,8 +177,7 @@ CREATE TABLE player_efficiency_statistics (
 );
 
 CREATE TABLE player_attack_statistics (
-    id SERIAL PRIMARY KEY,
-    player_id INT REFERENCES players(player_id),
+    player_id INT PRIMARY KEY REFERENCES players(player_id) ON DELETE CASCADE,
     shots INT,
     shots_on_target INT,
     assists INT,
