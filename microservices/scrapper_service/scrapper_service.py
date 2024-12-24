@@ -58,17 +58,17 @@ if __name__ == "__main__":
     producer = KafkaProducerFootballCloud(KAFKA_URL, KAFKA_PORT)
 
     data_types = [
-        # DataType.EFICIENCIA,
-        # DataType.DISCIPLINA,
+        DataType.EFICIENCIA,
+        DataType.DISCIPLINA,
         DataType.ATAQUES,
-        # DataType.DEFENSIVA,
-        # DataType.CLASICO
+        DataType.DEFENSIVA,
+        DataType.CLASICO
     ]
 
     try:
        
-        # extract_and_publish(scraper, producer, data_types, is_league=True, prefix="league", topic="league_stats")
-        extract_and_publish(scraper, producer, data_types, is_league=False, prefix="player", topic="player_stats")
+        extract_and_publish(scraper, producer, data_types, is_league=True, prefix="league", topic="teams_stats")
+        # extract_and_publish(scraper, producer, data_types, is_league=False, prefix="player", topic="player_stats")
 
     except Exception as e:
         print(f"❌ An unexpected error occurred: {e}")

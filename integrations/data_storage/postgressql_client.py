@@ -1,7 +1,7 @@
 import psycopg2
 from psycopg2 import sql, extras
 from typing import List, Dict, Any, Generator
-import json
+import json, time
 
 class PostgreSQLFootballCloud:
 
@@ -35,10 +35,7 @@ class PostgreSQLFootballCloud:
                 if result:
                     return result[0]
 
-                # Insert the team if not found
-                insert_query = "INSERT INTO teams (name) VALUES (%s) RETURNING team_id;"
-                cursor.execute(insert_query, (team_name,))
-                return cursor.fetchone()[0]
+                return None
         except psycopg2.Error as e:
             print(f"❌ Error retrieving or inserting team '{team_name}': {e}")
             raise
@@ -58,10 +55,7 @@ class PostgreSQLFootballCloud:
                 if result:
                     return result[0]
 
-                # Insert the player if not found
-                insert_query = "INSERT INTO players (name, team_id) VALUES (%s, %s) RETURNING player_id;"
-                cursor.execute(insert_query, (player_name, team_id))
-                return cursor.fetchone()[0]
+                return None
         except psycopg2.Error as e:
             print(f"❌ Error retrieving or inserting player '{player_name}': {e}")
             raise
@@ -107,7 +101,10 @@ class PostgreSQLFootballCloud:
         player_name = value.pop('name', None)
         team_name = value.pop('team', None)
         player_id = self.get_player_id(player_name, team_name)
-
+        
+        if player_id is None:
+            return
+        
         table_map = {
             'Ataques': 'player_attack_statistics',
             'Disciplina': 'player_discipline_statistics',
@@ -130,7 +127,7 @@ class PostgreSQLFootballCloud:
         - key (dict): Key containing 'team' and 'stats' type.
         - value (dict): The statistics data.
         """
-        team_name = value['team']
+        team_name = value.pop('team', None)
         team_id = self.get_team_id(team_name)
 
         table_map = {
