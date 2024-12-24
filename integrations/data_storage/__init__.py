@@ -1,1 +1,2 @@
 from .mongodb_client import MongoDBFootballCloud
+from .postgressql_client import PostgreSQLFootballCloud

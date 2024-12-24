@@ -1,16 +1,19 @@
-from integrations import KafkaConsumerFootballCloud
+# Ruta del fichero
+file_path = "datos_players.txt"
 
-def imprime(k, v):
-    print(f'Key: {k}, Value: {v}')
+# Leer y procesar el fichero
+with open(file_path, "r") as file:
+    formatted_data = []
+    for line in file:
+        if line.strip():  # Evitar líneas vacías
+            # Dividir la línea en dos partes: jugador y equipo
+            parts = line.split(",", 1)  # Divide solo en la primera coma
+            if len(parts) == 2:
+                player, team = map(str.strip, parts)
+                formatted_data.append((player, team))
+            else:
+                print(f"⚠️ Formato incorrecto: {line.strip()}")
 
-consumer = KafkaConsumerFootballCloud(
-    kafka_url='localhost',
-    kafka_port=9092,
-    topic='league_stats',
-    group_id='test_group_001'  # Cambia el group_id si es necesario
-)
-
-try:
-    consumer.subscribe(imprime)
-except Exception as e:
-    print(f"❌ Error during subscription: {e}")
+# Imprimir los datos en el formato requerido
+for player_team in formatted_data:
+    print(f'{player_team},')

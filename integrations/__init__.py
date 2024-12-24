@@ -1,4 +1,4 @@
-from .data_storage import MongoDBFootballCloud
+from .data_storage import MongoDBFootballCloud, PostgreSQLFootballCloud
 from .interfaces import ConsumerBrokerInterface, PublisherBrokerInterface, DataStorageInterface
 from .message_brokers import KafkaProducerFootballCloud, KafkaConsumerFootballCloud
 from .web_scraping import DataType, FootballScraper

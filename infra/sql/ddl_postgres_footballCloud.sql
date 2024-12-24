@@ -1,12 +1,35 @@
+-- Drop existing tables to ensure a clean setup
+DROP TABLE IF EXISTS player_attack_statistics CASCADE;
+DROP TABLE IF EXISTS player_efficiency_statistics CASCADE;
+DROP TABLE IF EXISTS player_defensive_statistics CASCADE;
+DROP TABLE IF EXISTS player_classic_statistics CASCADE;
+DROP TABLE IF EXISTS player_discipline_statistics CASCADE;
+DROP TABLE IF EXISTS players CASCADE;
+DROP TABLE IF EXISTS efficiency_statistics CASCADE;
+DROP TABLE IF EXISTS defensive_statistics CASCADE;
+DROP TABLE IF EXISTS classic_statistics CASCADE;
+DROP TABLE IF EXISTS discipline_statistics CASCADE;
+DROP TABLE IF EXISTS attack_statistics CASCADE;
+DROP TABLE IF EXISTS teams CASCADE;
+DROP TABLE IF EXISTS leagues CASCADE;
+
+-- Create tables
+CREATE TABLE leagues (
+    league_id SERIAL PRIMARY KEY,
+    country VARCHAR(100) NOT NULL,
+    name VARCHAR(100) NOT NULL
+);
+
 
 CREATE TABLE teams (
     team_id SERIAL PRIMARY KEY,
-    name VARCHAR(100) NOT NULL
+    name VARCHAR(100) NOT NULL,
+    league_id INT REFERENCES leagues(league_id)
 );
 
 CREATE TABLE attack_statistics (
     id SERIAL PRIMARY KEY,
-    team_id INT REFERENCES teams(team_id) ON DELETE CASCADE,
+    team_id INT REFERENCES teams(team_id),
     shots INT,
     shots_on_target INT,
     assists INT,
@@ -25,7 +48,7 @@ CREATE TABLE attack_statistics (
 
 CREATE TABLE discipline_statistics (
     id SERIAL PRIMARY KEY,
-    team_id INT REFERENCES teams(team_id) ON DELETE CASCADE,
+    team_id INT REFERENCES teams(team_id),
     yellow_cards INT,
     red_cards INT,
     second_yellows INT,
@@ -38,9 +61,9 @@ CREATE TABLE discipline_statistics (
     fouls_per_card FLOAT
 );
 
-CREATE TABLE match_results_statistics (
+CREATE TABLE classic_statistics (
     id SERIAL PRIMARY KEY,
-    team_id INT REFERENCES teams(team_id) ON DELETE CASCADE,
+    team_id INT REFERENCES teams(team_id),
     matches_won INT,
     matches_lost INT,
     matches_drawn INT,
@@ -51,7 +74,7 @@ CREATE TABLE match_results_statistics (
 
 CREATE TABLE defensive_statistics (
     id SERIAL PRIMARY KEY,
-    team_id INT REFERENCES teams(team_id) ON DELETE CASCADE,
+    team_id INT REFERENCES teams(team_id),
     blocks INT,
     interceptions INT,
     recoveries INT,
@@ -67,7 +90,7 @@ CREATE TABLE defensive_statistics (
 
 CREATE TABLE efficiency_statistics (
     id SERIAL PRIMARY KEY,
-    team_id INT REFERENCES teams(team_id) ON DELETE CASCADE,
+    team_id INT REFERENCES teams(team_id),
     corners_taken INT,
     tackles INT,
     duels INT,
@@ -94,7 +117,7 @@ CREATE TABLE players (
 
 CREATE TABLE player_discipline_statistics (
     id SERIAL PRIMARY KEY,
-    player_id INT REFERENCES players(player_id) ON DELETE CASCADE,
+    player_id INT REFERENCES players(player_id),
     yellow_cards INT,
     red_cards INT,
     second_yellows INT,
@@ -109,7 +132,7 @@ CREATE TABLE player_discipline_statistics (
 
 CREATE TABLE player_classic_statistics (
     id SERIAL PRIMARY KEY,
-    player_id INT REFERENCES players(player_id) ON DELETE CASCADE,
+    player_id INT REFERENCES players(player_id),
     minutes_played INT,
     matches_played INT,
     complete_matches INT,
@@ -121,10 +144,9 @@ CREATE TABLE player_classic_statistics (
     goals_conceded INT
 );
 
-
 CREATE TABLE player_defensive_statistics (
     id SERIAL PRIMARY KEY,
-    player_id INT REFERENCES players(player_id) ON DELETE CASCADE,
+    player_id INT REFERENCES players(player_id),
     blocks INT,
     interceptions INT,
     recoveries INT,
@@ -138,10 +160,9 @@ CREATE TABLE player_defensive_statistics (
     failed_aerial_duels INT
 );
 
-
 CREATE TABLE player_efficiency_statistics (
     id SERIAL PRIMARY KEY,
-    player_id INT REFERENCES players(player_id) ON DELETE CASCADE,
+    player_id INT REFERENCES players(player_id),
     corners_taken INT,
     tackles INT,
     duels INT,
@@ -160,10 +181,9 @@ CREATE TABLE player_efficiency_statistics (
     set_piece_goals FLOAT
 );
 
-
 CREATE TABLE player_attack_statistics (
     id SERIAL PRIMARY KEY,
-    player_id INT REFERENCES players(player_id) ON DELETE CASCADE,
+    player_id INT REFERENCES players(player_id),
     shots INT,
     shots_on_target INT,
     assists INT,

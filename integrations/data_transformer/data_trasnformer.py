@@ -42,7 +42,6 @@ class DataTransformer:
     # Team Transformations
     def _transform_team_attack(self, data: dict):
         return {
-            'name': data.get('NOMBRE', '').title(),
             'team': data.get('EQUIPO', '').title(),
             'shots': int(data.get('T', '0')),
             'shots_on_target': int(data.get('DAP', '0')),

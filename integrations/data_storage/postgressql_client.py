@@ -4,17 +4,8 @@ from typing import List, Dict, Any, Generator
 import json
 
 class PostgreSQLFootballCloud:
-    def __init__(self, host="localhost", database="footballcloud_db", user="user", password=1234, port=5432):
-        """
-        Initializes a connection to a PostgreSQL instance.
 
-        Parameters:
-        - host (str): The database host.
-        - database (str): The name of the database to connect to.
-        - user (str): The username for authentication.
-        - password (str): The password for authentication.
-        - port (int): The port number (default is 5432).
-        """
+    def __init__(self, host="localhost", database="footballcloud_db", user="user", password="1234", port=5432):
         self.connection_params = {
             "host": host,
             "database": database,
@@ -30,135 +21,127 @@ class PostgreSQLFootballCloud:
             print(f"❌ Failed to connect to PostgreSQL: {e}")
             raise
 
-    def get_connection(self) -> Generator:
-        """
-        Yields a database connection and ensures proper closure after use.
-        """
-        connection = psycopg2.connect(**self.connection_params)
-        try:
-            yield connection
-        finally:
-            connection.close()
 
-    def insert(self, table_name: str, data: Dict[str, Any]) -> None:
+    def get_team_id(self, team_name: str) -> int:
         """
-        Inserts a single record into the specified table.
-
-        Parameters:
-        - table_name (str): The name of the table.
-        - data (dict): The record to insert.
+        Retrieve the team_id for the given team name. If not found, insert the team.
         """
         try:
             with self.connection.cursor() as cursor:
-                columns = sql.SQL(", ").join(map(sql.Identifier, data.keys()))
-                values = sql.SQL(", ").join(sql.Placeholder() * len(data))
-                query = sql.SQL("INSERT INTO {} ({}) VALUES ({})").format(
-                    sql.Identifier(table_name), columns, values
+                query = "SELECT team_id FROM teams WHERE name = %s;"
+                cursor.execute(query, (team_name,))
+                result = cursor.fetchone()
+
+                if result:
+                    return result[0]
+
+                # Insert the team if not found
+                insert_query = "INSERT INTO teams (name) VALUES (%s) RETURNING team_id;"
+                cursor.execute(insert_query, (team_name,))
+                return cursor.fetchone()[0]
+        except psycopg2.Error as e:
+            print(f"❌ Error retrieving or inserting team '{team_name}': {e}")
+            raise
+
+    def get_player_id(self, player_name: str, team_name: str) -> int:
+        """
+        Retrieve the player_id for the given player name and team. If not found, insert the player.
+        """
+        try:
+            team_id = self.get_team_id(team_name)
+
+            with self.connection.cursor() as cursor:
+                query = "SELECT player_id FROM players WHERE name = %s AND team_id = %s;"
+                cursor.execute(query, (player_name, team_id))
+                result = cursor.fetchone()
+
+                if result:
+                    return result[0]
+
+                # Insert the player if not found
+                insert_query = "INSERT INTO players (name, team_id) VALUES (%s, %s) RETURNING player_id;"
+                cursor.execute(insert_query, (player_name, team_id))
+                return cursor.fetchone()[0]
+        except psycopg2.Error as e:
+            print(f"❌ Error retrieving or inserting player '{player_name}': {e}")
+            raise
+
+    def insert_statistics(self, table_name: str, id_name: str, entity_id: int, data: Dict[str, Any]) -> None:
+        """
+        Insert statistics into the specified table.
+
+        Parameters:
+        - table_name (str): The name of the table.
+        - id_name (str): The name of the ID column (team_id or player_id).
+        - entity_id (int): The ID of the team or player.
+        - data (dict): The statistics data to insert.
+        """
+        try:
+            with self.connection.cursor() as cursor:
+                columns = list(data.keys())
+                values = list(data.values())
+                placeholders = ", ".join(["%s"] * len(columns))
+
+                query = sql.SQL("INSERT INTO {} ({}, {}) VALUES (%s, {})").format(
+                    sql.Identifier(table_name),
+                    sql.Identifier(id_name),
+                    sql.SQL(", ").join(map(sql.Identifier, columns)),
+                    sql.SQL(placeholders),
                 )
-                cursor.execute(query, tuple(data.values()))
-                print(f"✅ Record inserted into '{table_name}'.")
+                cursor.execute(query, [entity_id] + values)
+                print(f"✅ Statistics inserted into '{table_name}' for {id_name}={entity_id}.")
         except psycopg2.Error as e:
-            print(f"❌ Error inserting record: {e}")
+            print(f"❌ Error inserting statistics into '{table_name}': {e}")
+            raise
 
-    def insert_many(self, table_name: str, data: List[Dict[str, Any]]) -> None:
+    def process_player_statistics(self, key: Dict[str, Any], value: Dict[str, Any]) -> None:
         """
-        Inserts multiple records into the specified table.
+        Process and insert player statistics based on the key and value.
 
         Parameters:
-        - table_name (str): The name of the table.
-        - data (list): A list of records to insert.
+        - key (dict): Key containing 'player' and 'stats' type.
+        - value (dict): The statistics data.
         """
-        if not data:
-            print("⚠️ No data to insert.")
-            return
+        player_name = value['name']
+        team_name = value['team']
+        player_id = self.get_player_id(player_name, team_name)
 
-        try:
-            with self.connection.cursor() as cursor:
-                columns = data[0].keys()
-                values = [[row[col] for col in columns] for row in data]
-                query = f"INSERT INTO {table_name} ({', '.join(columns)}) VALUES %s"
-                extras.execute_values(cursor, query, values)
-                print(f"✅ {len(data)} records inserted into '{table_name}'.")
-        except psycopg2.Error as e:
-            print(f"❌ Error inserting records: {e}")
+        table_map = {
+            'Ataques': 'player_attack_statistics',
+            'Disciplina': 'player_discipline_statistics',
+            'Clasico': 'player_classic_statistics',
+            'Defensiva': 'player_defensive_statistics',
+            'Eficiencia': 'player_efficiency_statistics',
+        }
 
-    def find(self, table_name: str, query: str = "", params: tuple = ()) -> List[Dict[str, Any]]:
+        stats_table = table_map.get(key['stats'])
+        if stats_table:
+            self.insert_statistics(stats_table, 'player_id', player_id, value)
+        else:
+            print(f"⚠️ Unknown statistics type: {key['stats']} for player '{player_name}'.")
+
+    def process_team_statistics(self, key: Dict[str, Any], value: Dict[str, Any]) -> None:
         """
-        Retrieves records from the specified table based on a query.
+        Process and insert team statistics based on the key and value.
 
         Parameters:
-        - table_name (str): The name of the table.
-        - query (str): The WHERE clause for filtering (default is "").
-        - params (tuple): The query parameters (default is an empty tuple).
-
-        Returns:
-        - list: A list of records.
+        - key (dict): Key containing 'team' and 'stats' type.
+        - value (dict): The statistics data.
         """
-        try:
-            with self.connection.cursor(cursor_factory=extras.DictCursor) as cursor:
-                query = f"SELECT * FROM {table_name} {query}"
-                cursor.execute(query, params)
-                result = cursor.fetchall()
-                print(f"✅ Retrieved {len(result)} records from '{table_name}'.")
-                return [dict(row) for row in result]
-        except psycopg2.Error as e:
-            print(f"❌ Error retrieving records: {e}")
-            return []
+        team_name = value['team']
+        team_id = self.get_team_id(team_name)
 
-    def update(self, table_name: str, query: str, params: tuple, new_values: Dict[str, Any]) -> None:
-        """
-        Updates records in the specified table.
+        table_map = {
+            'Ataques': 'attack_statistics',
+            'Disciplina': 'discipline_statistics',
+            'Clasico': 'classic_statistics',
+            'Defensiva': 'defensive_statistics',
+            'Eficiencia': 'efficiency_statistics',
+        }
 
-        Parameters:
-        - table_name (str): The name of the table.
-        - query (str): The WHERE clause for filtering.
-        - params (tuple): The query parameters.
-        - new_values (dict): The new values to set.
-        """
-        try:
-            with self.connection.cursor() as cursor:
-                set_clause = ", ".join(f"{key} = %s" for key in new_values.keys())
-                final_query = f"UPDATE {table_name} SET {set_clause} {query}"
-                cursor.execute(final_query, tuple(new_values.values()) + params)
-                print(f"✅ Updated records in '{table_name}'.")
-        except psycopg2.Error as e:
-            print(f"❌ Error updating records: {e}")
+        stats_table = table_map.get(key['stats'])
+        if stats_table:
+            self.insert_statistics(stats_table, 'team_id', team_id, value)
+        else:
+            print(f"⚠️ Unknown statistics type: {key['stats']} for team '{team_name}'.")
 
-    def delete(self, table_name: str, query: str, params: tuple) -> None:
-        """
-        Deletes records from the specified table.
-
-        Parameters:
-        - table_name (str): The name of the table.
-        - query (str): The WHERE clause for filtering.
-        - params (tuple): The query parameters.
-        """
-        try:
-            with self.connection.cursor() as cursor:
-                final_query = f"DELETE FROM {table_name} {query}"
-                cursor.execute(final_query, params)
-                print(f"✅ Deleted records from '{table_name}'.")
-        except psycopg2.Error as e:
-            print(f"❌ Error deleting records: {e}")
-
-    def load_data_from_json(self, file_path: str) -> None:
-        """
-        Loads data from a JSON file and inserts it into the appropriate tables.
-
-        Parameters:
-        - file_path (str): Path to the JSON file containing the data.
-        """
-        try:
-            with open(file_path, "r") as f:
-                data = json.load(f)
-
-            self.insert_many("players", data.get("players", []))
-            self.insert_many("teams", data.get("teams", []))
-            self.insert("leagues", data.get("leagues", {}))
-            self.insert_many("matches", data.get("matches", []))
-
-            print("✅ Data successfully loaded from JSON file into PostgreSQL.")
-        except FileNotFoundError:
-            print(f"❌ File not found: {file_path}")
-        except Exception as e:
-            print(f"❌ Error loading data from JSON: {e}")
