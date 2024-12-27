@@ -1,0 +1,3303 @@
+{
+    "leagues": [
+        {
+            "league_id": 1,
+            "country": "Spain",
+            "name": "La Liga"
+        }
+    ],
+    "teams": [
+        {
+            "team_id": 1,
+            "name": "Athletic Club",
+            "league_id": 1
+        },
+        {
+            "team_id": 2,
+            "name": "Atlético De Madrid",
+            "league_id": 1
+        },
+        {
+            "team_id": 3,
+            "name": "Ca Osasuna",
+            "league_id": 1
+        },
+        {
+            "team_id": 4,
+            "name": "Cd Leganés",
+            "league_id": 1
+        },
+        {
+            "team_id": 5,
+            "name": "Deportivo Alavés",
+            "league_id": 1
+        },
+        {
+            "team_id": 6,
+            "name": "Fc Barcelona",
+            "league_id": 1
+        },
+        {
+            "team_id": 7,
+            "name": "Getafe Cf",
+            "league_id": 1
+        },
+        {
+            "team_id": 8,
+            "name": "Girona Fc",
+            "league_id": 1
+        },
+        {
+            "team_id": 9,
+            "name": "Rc Celta",
+            "league_id": 1
+        },
+        {
+            "team_id": 10,
+            "name": "Rcd Espanyol De Barcelona",
+            "league_id": 1
+        },
+        {
+            "team_id": 11,
+            "name": "Rcd Mallorca",
+            "league_id": 1
+        },
+        {
+            "team_id": 12,
+            "name": "Rayo Vallecano",
+            "league_id": 1
+        },
+        {
+            "team_id": 13,
+            "name": "Real Betis",
+            "league_id": 1
+        },
+        {
+            "team_id": 14,
+            "name": "Real Madrid",
+            "league_id": 1
+        },
+        {
+            "team_id": 15,
+            "name": "Real Sociedad",
+            "league_id": 1
+        },
+        {
+            "team_id": 16,
+            "name": "Real Valladolid Cf",
+            "league_id": 1
+        },
+        {
+            "team_id": 17,
+            "name": "Sevilla Fc",
+            "league_id": 1
+        },
+        {
+            "team_id": 18,
+            "name": "Ud Las Palmas",
+            "league_id": 1
+        },
+        {
+            "team_id": 19,
+            "name": "Valencia Cf",
+            "league_id": 1
+        },
+        {
+            "team_id": 20,
+            "name": "Villarreal Cf",
+            "league_id": 1
+        }
+    ],
+    "players": [
+        {
+            "player_id": 1,
+            "name": "Abde Ezzalzouli",
+            "team_id": 13
+        },
+        {
+            "player_id": 2,
+            "name": "Abde Rebbach",
+            "team_id": 5
+        },
+        {
+            "player_id": 3,
+            "name": "Abdel Abqar",
+            "team_id": 5
+        },
+        {
+            "player_id": 4,
+            "name": "Abdoulaye Keita",
+            "team_id": 7
+        },
+        {
+            "player_id": 5,
+            "name": "Abdul Mumin",
+            "team_id": 12
+        },
+        {
+            "player_id": 6,
+            "name": "Abdón Prats",
+            "team_id": 11
+        },
+        {
+            "player_id": 7,
+            "name": "Abel Bretones",
+            "team_id": 3
+        },
+        {
+            "player_id": 8,
+            "name": "Abel Ruiz",
+            "team_id": 8
+        },
+        {
+            "player_id": 9,
+            "name": "Aboubacar Bassinga",
+            "team_id": null
+        },
+        {
+            "player_id": 10,
+            "name": "Adama Boiro",
+            "team_id": 1
+        },
+        {
+            "player_id": 11,
+            "name": "Adnan Januzaj",
+            "team_id": 18
+        },
+        {
+            "player_id": 12,
+            "name": "Adri Embarba",
+            "team_id": 12
+        },
+        {
+            "player_id": 13,
+            "name": "Adrià Alti",
+            "team_id": 4
+        },
+        {
+            "player_id": 14,
+            "name": "Adrià Pedrosa",
+            "team_id": 17
+        },
+        {
+            "player_id": 15,
+            "name": "Adrián San Miguel Del Castillo",
+            "team_id": 13
+        },
+        {
+            "player_id": 16,
+            "name": "Adrián Arnu",
+            "team_id": 16
+        },
+        {
+            "player_id": 17,
+            "name": "Adrián Hernández Hernández",
+            "team_id": 5
+        },
+        {
+            "player_id": 18,
+            "name": "Adrián Rodríguez",
+            "team_id": 5
+        },
+        {
+            "player_id": 19,
+            "name": "Aihen Muñoz",
+            "team_id": 15
+        },
+        {
+            "player_id": 20,
+            "name": "Álvaro Killane",
+            "team_id": 18
+        },
+        {
+            "player_id": 21,
+            "name": "Álvaro Odriozola",
+            "team_id": 15
+        },
+        {
+            "player_id": 22,
+            "name": "Álvaro Rodríguez",
+            "team_id": 7
+        },
+        {
+            "player_id": 23,
+            "name": "Álvaro Tejero",
+            "team_id": 10
+        },
+        {
+            "player_id": 24,
+            "name": "Ángel Correa",
+            "team_id": 2
+        },
+        {
+            "player_id": 25,
+            "name": "Ángel Fortuño",
+            "team_id": 10
+        },
+        {
+            "player_id": 26,
+            "name": "Áron Yaakobishvili",
+            "team_id": 6
+        },
+        {
+            "player_id": 27,
+            "name": "Éder Gabriel Militão",
+            "team_id": 14
+        },
+        {
+            "player_id": 28,
+            "name": "Íñigo Lekue",
+            "team_id": 1
+        },
+        {
+            "player_id": 29,
+            "name": "Íñigo Ruíz De Galarreta",
+            "team_id": 1
+        },
+        {
+            "player_id": 30,
+            "name": "Óscar De Marcos",
+            "team_id": 1
+        },
+        {
+            "player_id": 31,
+            "name": "Óscar Mingueza",
+            "team_id": 9
+        },
+        {
+            "player_id": 32,
+            "name": "Óscar Rodríguez",
+            "team_id": 4
+        },
+        {
+            "player_id": 33,
+            "name": "Óscar Trejo",
+            "team_id": 12
+        },
+        {
+            "player_id": 34,
+            "name": "Óscar Valentín",
+            "team_id": 12
+        },
+        {
+            "player_id": 35,
+            "name": "Ørjan Nyland",
+            "team_id": 17
+        },
+        {
+            "player_id": 36,
+            "name": "Yeremy Pino",
+            "team_id": 20
+        },
+        {
+            "player_id": 37,
+            "name": "Yoel Lago",
+            "team_id": 9
+        },
+        {
+            "player_id": 38,
+            "name": "Youssef Lekhedim",
+            "team_id": 14
+        },
+        {
+            "player_id": 39,
+            "name": "Youssouf Sabaly",
+            "team_id": 13
+        },
+        {
+            "player_id": 40,
+            "name": "Yuri Berchiche",
+            "team_id": 1
+        },
+        {
+            "player_id": 41,
+            "name": "Yvan Neyou",
+            "team_id": 4
+        },
+        {
+            "player_id": 42,
+            "name": "Yáser Asprilla",
+            "team_id": 8
+        },
+        {
+            "player_id": 43,
+            "name": "Álex Baena",
+            "team_id": 20
+        },
+        {
+            "player_id": 44,
+            "name": "Álex Muñoz",
+            "team_id": 18
+        },
+        {
+            "player_id": 45,
+            "name": "Álex Remiro",
+            "team_id": 15
+        },
+        {
+            "player_id": 46,
+            "name": "Álex Sola",
+            "team_id": 7
+        },
+        {
+            "player_id": 47,
+            "name": "Álex Suárez",
+            "team_id": 18
+        },
+        {
+            "player_id": 48,
+            "name": "Álvaro Aceves",
+            "team_id": 16
+        },
+        {
+            "player_id": 49,
+            "name": "Álvaro Aguado",
+            "team_id": 10
+        },
+        {
+            "player_id": 50,
+            "name": "Álvaro Cortés",
+            "team_id": 6
+        },
+        {
+            "player_id": 51,
+            "name": "Álvaro Djaló Dias Fernandes",
+            "team_id": 1
+        },
+        {
+            "player_id": 52,
+            "name": "Álvaro Fernández",
+            "team_id": 17
+        },
+        {
+            "player_id": 53,
+            "name": "Álvaro García",
+            "team_id": 12
+        },
+        {
+            "player_id": 54,
+            "name": "Valery Fernández",
+            "team_id": 11
+        },
+        {
+            "player_id": 55,
+            "name": "Vedat Muriqi",
+            "team_id": 11
+        },
+        {
+            "player_id": 56,
+            "name": "Vicente Guaita",
+            "team_id": 9
+        },
+        {
+            "player_id": 57,
+            "name": "Viktor Tsyhankov",
+            "team_id": 8
+        },
+        {
+            "player_id": 58,
+            "name": "Vinícius José Paixão De Oliveira Júnior",
+            "team_id": 14
+        },
+        {
+            "player_id": 59,
+            "name": "Viti Rozada",
+            "team_id": 18
+        },
+        {
+            "player_id": 60,
+            "name": "Vitor Hugo Roque Ferreira",
+            "team_id": 13
+        },
+        {
+            "player_id": 61,
+            "name": "Víctor Meseguer",
+            "team_id": 16
+        },
+        {
+            "player_id": 62,
+            "name": "Víctor Muñoz Villanueva",
+            "team_id": 14
+        },
+        {
+            "player_id": 63,
+            "name": "Víctor Puig",
+            "team_id": 18
+        },
+        {
+            "player_id": 64,
+            "name": "Walid Cheddira",
+            "team_id": 10
+        },
+        {
+            "player_id": 65,
+            "name": "Warren Madrigal",
+            "team_id": 19
+        },
+        {
+            "player_id": 66,
+            "name": "William Silva De Carvalho",
+            "team_id": 13
+        },
+        {
+            "player_id": 67,
+            "name": "Williot Swedberg",
+            "team_id": 9
+        },
+        {
+            "player_id": 68,
+            "name": "Willy Kambwala",
+            "team_id": 20
+        },
+        {
+            "player_id": 69,
+            "name": "Wojciech Szczesny",
+            "team_id": 6
+        },
+        {
+            "player_id": 70,
+            "name": "Yangel Herrera",
+            "team_id": 8
+        },
+        {
+            "player_id": 71,
+            "name": "Yarek Gasiorowski",
+            "team_id": 19
+        },
+        {
+            "player_id": 72,
+            "name": "Jesús Santiago Pérez",
+            "team_id": 7
+        },
+        {
+            "player_id": 73,
+            "name": "Yeray Álvarez",
+            "team_id": 1
+        },
+        {
+            "player_id": 74,
+            "name": "Thierno Barry",
+            "team_id": 20
+        },
+        {
+            "player_id": 75,
+            "name": "Thierry Rendall Correia",
+            "team_id": 19
+        },
+        {
+            "player_id": 76,
+            "name": "Thomas Lemar",
+            "team_id": 2
+        },
+        {
+            "player_id": 77,
+            "name": "Tomás Conechny",
+            "team_id": 5
+        },
+        {
+            "player_id": 78,
+            "name": "Toni Fernández",
+            "team_id": 6
+        },
+        {
+            "player_id": 79,
+            "name": "Antonio Latorre Grueso",
+            "team_id": 11
+        },
+        {
+            "player_id": 80,
+            "name": "Toni Martínez",
+            "team_id": 5
+        },
+        {
+            "player_id": 81,
+            "name": "Umar Sadiq",
+            "team_id": 15
+        },
+        {
+            "player_id": 82,
+            "name": "Unai Egiluz",
+            "team_id": null
+        },
+        {
+            "player_id": 83,
+            "name": "Unai García",
+            "team_id": 3
+        },
+        {
+            "player_id": 84,
+            "name": "Unai Gómez",
+            "team_id": 1
+        },
+        {
+            "player_id": 85,
+            "name": "Unai López",
+            "team_id": 12
+        },
+        {
+            "player_id": 86,
+            "name": "Unai Marrero",
+            "team_id": 15
+        },
+        {
+            "player_id": 87,
+            "name": "Unai Núñez",
+            "team_id": 1
+        },
+        {
+            "player_id": 88,
+            "name": "Unai Simón",
+            "team_id": 1
+        },
+        {
+            "player_id": 89,
+            "name": "Urko González",
+            "team_id": 15
+        },
+        {
+            "player_id": 90,
+            "name": "Valentin Rosier",
+            "team_id": 4
+        },
+        {
+            "player_id": 91,
+            "name": "Valentín Barco",
+            "team_id": 17
+        },
+        {
+            "player_id": 92,
+            "name": "Valentín Pezzolesi",
+            "team_id": 18
+        },
+        {
+            "player_id": 93,
+            "name": "Sergio Herrera",
+            "team_id": 3
+        },
+        {
+            "player_id": 94,
+            "name": "Sergio Mestre",
+            "team_id": 14
+        },
+        {
+            "player_id": 95,
+            "name": "Seydouba Cissé",
+            "team_id": 4
+        },
+        {
+            "player_id": 96,
+            "name": "Sheraldo Becker",
+            "team_id": 15
+        },
+        {
+            "player_id": 97,
+            "name": "Siebe Van Der Heyden",
+            "team_id": 11
+        },
+        {
+            "player_id": 98,
+            "name": "Silvi Clua",
+            "team_id": 8
+        },
+        {
+            "player_id": 99,
+            "name": "Stanis Idumbo Muzambo",
+            "team_id": 17
+        },
+        {
+            "player_id": 100,
+            "name": "Stanko Juric",
+            "team_id": 16
+        },
+        {
+            "player_id": 101,
+            "name": "Juan Diego Molina Martínez",
+            "team_id": 5
+        },
+        {
+            "player_id": 102,
+            "name": "Stole Dimitrievski",
+            "team_id": 19
+        },
+        {
+            "player_id": 103,
+            "name": "Jesús Joaquín Fernández Sáenz De La Torre",
+            "team_id": 17
+        },
+        {
+            "player_id": 104,
+            "name": "Sébastien Haller",
+            "team_id": 4
+        },
+        {
+            "player_id": 105,
+            "name": "Tadeo Allende",
+            "team_id": 9
+        },
+        {
+            "player_id": 106,
+            "name": "Takefusa Kubo",
+            "team_id": 15
+        },
+        {
+            "player_id": 107,
+            "name": "Takuma Asano",
+            "team_id": 11
+        },
+        {
+            "player_id": 108,
+            "name": "Tanguy Nianzou",
+            "team_id": 17
+        },
+        {
+            "player_id": 109,
+            "name": "Tasos Douvikas",
+            "team_id": 9
+        },
+        {
+            "player_id": 110,
+            "name": "Thiago Ojeda",
+            "team_id": 20
+        },
+        {
+            "player_id": 111,
+            "name": "Thibaut Courtois",
+            "team_id": 14
+        },
+        {
+            "player_id": 112,
+            "name": "Samuel Dias Lino",
+            "team_id": 2
+        },
+        {
+            "player_id": 113,
+            "name": "Samuel De Almeida Costa",
+            "team_id": 11
+        },
+        {
+            "player_id": 114,
+            "name": "Sandro Ramírez",
+            "team_id": 18
+        },
+        {
+            "player_id": 115,
+            "name": "Santi Comesaña",
+            "team_id": 20
+        },
+        {
+            "player_id": 116,
+            "name": "Santiago Mouriño",
+            "team_id": 5
+        },
+        {
+            "player_id": 117,
+            "name": "Saúl Ñíguez",
+            "team_id": 17
+        },
+        {
+            "player_id": 118,
+            "name": "Scott Mckenna",
+            "team_id": 18
+        },
+        {
+            "player_id": 119,
+            "name": "Sebas Wade",
+            "team_id": 11
+        },
+        {
+            "player_id": 120,
+            "name": "Selim Amallah",
+            "team_id": 16
+        },
+        {
+            "player_id": 121,
+            "name": "Sergi Altimira",
+            "team_id": 13
+        },
+        {
+            "player_id": 122,
+            "name": "Sergi Canós",
+            "team_id": 19
+        },
+        {
+            "player_id": 123,
+            "name": "Sergi Cardona",
+            "team_id": 20
+        },
+        {
+            "player_id": 124,
+            "name": "Sergi Darder",
+            "team_id": 11
+        },
+        {
+            "player_id": 125,
+            "name": "Sergi Domínguez",
+            "team_id": 6
+        },
+        {
+            "player_id": 126,
+            "name": "Sergi Guardiola",
+            "team_id": 12
+        },
+        {
+            "player_id": 127,
+            "name": "Sergi Gómez",
+            "team_id": 10
+        },
+        {
+            "player_id": 128,
+            "name": "Sergio Camello",
+            "team_id": 12
+        },
+        {
+            "player_id": 129,
+            "name": "Sergio Carreira",
+            "team_id": 9
+        },
+        {
+            "player_id": 130,
+            "name": "Sergio González",
+            "team_id": 4
+        },
+        {
+            "player_id": 131,
+            "name": "Sergio Gómez",
+            "team_id": 15
+        },
+        {
+            "player_id": 132,
+            "name": "Renato Tapia",
+            "team_id": 4
+        },
+        {
+            "player_id": 133,
+            "name": "Ricard Artero",
+            "team_id": 8
+        },
+        {
+            "player_id": 134,
+            "name": "Ricardo Rodríguez",
+            "team_id": 13
+        },
+        {
+            "player_id": 135,
+            "name": "Robert Lewandowski",
+            "team_id": 6
+        },
+        {
+            "player_id": 136,
+            "name": "Robert Navarro",
+            "team_id": 11
+        },
+        {
+            "player_id": 137,
+            "name": "Roberto López",
+            "team_id": 4
+        },
+        {
+            "player_id": 138,
+            "name": "Robin Le Normand",
+            "team_id": 2
+        },
+        {
+            "player_id": 139,
+            "name": "Rodrigo Abajas",
+            "team_id": 19
+        },
+        {
+            "player_id": 140,
+            "name": "Rodrigo De Paul",
+            "team_id": 2
+        },
+        {
+            "player_id": 141,
+            "name": "Rodrigo Riquelme",
+            "team_id": 2
+        },
+        {
+            "player_id": 142,
+            "name": "Rodrygo Silva De Goes",
+            "team_id": 14
+        },
+        {
+            "player_id": 143,
+            "name": "Romain Perraud",
+            "team_id": 13
+        },
+        {
+            "player_id": 144,
+            "name": "Ronald Araujo",
+            "team_id": 6
+        },
+        {
+            "player_id": 145,
+            "name": "Rubén García",
+            "team_id": 3
+        },
+        {
+            "player_id": 146,
+            "name": "Rubén Gómez",
+            "team_id": 20
+        },
+        {
+            "player_id": 147,
+            "name": "Rubén Iranzo",
+            "team_id": 19
+        },
+        {
+            "player_id": 148,
+            "name": "Rubén Peña",
+            "team_id": 3
+        },
+        {
+            "player_id": 149,
+            "name": "Rui Tiago Dantas Da Silva",
+            "team_id": 13
+        },
+        {
+            "player_id": 150,
+            "name": "Salvi Sánchez",
+            "team_id": 10
+        },
+        {
+            "player_id": 151,
+            "name": "Peter Federico González Carmona",
+            "team_id": 7
+        },
+        {
+            "player_id": 152,
+            "name": "Pol Lozano",
+            "team_id": 10
+        },
+        {
+            "player_id": 153,
+            "name": "Pol Tristán",
+            "team_id": 10
+        },
+        {
+            "player_id": 154,
+            "name": "Cristian Portugués Manzanera",
+            "team_id": 8
+        },
+        {
+            "player_id": 155,
+            "name": "Rafa Mir",
+            "team_id": 19
+        },
+        {
+            "player_id": 156,
+            "name": "Rafael Bauza",
+            "team_id": 10
+        },
+        {
+            "player_id": 157,
+            "name": "Rafael Romero",
+            "team_id": 17
+        },
+        {
+            "player_id": 158,
+            "name": "Ramon Terrats",
+            "team_id": 20
+        },
+        {
+            "player_id": 159,
+            "name": "Ramón Martínez",
+            "team_id": 17
+        },
+        {
+            "player_id": 160,
+            "name": "Randy Nteka",
+            "team_id": 12
+        },
+        {
+            "player_id": 161,
+            "name": "Raphael Dias Belloli",
+            "team_id": 6
+        },
+        {
+            "player_id": 162,
+            "name": "Raúl Asencio Del Rosario",
+            "team_id": 14
+        },
+        {
+            "player_id": 163,
+            "name": "Raúl Albiol",
+            "team_id": 20
+        },
+        {
+            "player_id": 164,
+            "name": "Raúl Chasco",
+            "team_id": 16
+        },
+        {
+            "player_id": 165,
+            "name": "Raúl García",
+            "team_id": 3
+        },
+        {
+            "player_id": 166,
+            "name": "Raúl Jiménez",
+            "team_id": 19
+        },
+        {
+            "player_id": 167,
+            "name": "Raúl Martínez",
+            "team_id": 8
+        },
+        {
+            "player_id": 168,
+            "name": "Raúl Moro",
+            "team_id": 16
+        },
+        {
+            "player_id": 169,
+            "name": "Raúl De Tomás",
+            "team_id": 12
+        },
+        {
+            "player_id": 170,
+            "name": "Reinildo Isnard Mandava",
+            "team_id": 2
+        },
+        {
+            "player_id": 171,
+            "name": "Papa Dame Ba",
+            "team_id": 8
+        },
+        {
+            "player_id": 172,
+            "name": "Pape Gueye",
+            "team_id": 20
+        },
+        {
+            "player_id": 173,
+            "name": "Pathé Ciss",
+            "team_id": 12
+        },
+        {
+            "player_id": 174,
+            "name": "Pau Cabanes",
+            "team_id": 20
+        },
+        {
+            "player_id": 175,
+            "name": "Pau Cubarsí",
+            "team_id": 6
+        },
+        {
+            "player_id": 176,
+            "name": "Pau López",
+            "team_id": 8
+        },
+        {
+            "player_id": 177,
+            "name": "Pau Navarro",
+            "team_id": 20
+        },
+        {
+            "player_id": 178,
+            "name": "Pau Víctor",
+            "team_id": 6
+        },
+        {
+            "player_id": 179,
+            "name": "Paulo Gazzaniga",
+            "team_id": 8
+        },
+        {
+            "player_id": 180,
+            "name": "Pedro González López",
+            "team_id": 6
+        },
+        {
+            "player_id": 181,
+            "name": "Pedro Díaz",
+            "team_id": 12
+        },
+        {
+            "player_id": 182,
+            "name": "Pedro Ortiz",
+            "team_id": 17
+        },
+        {
+            "player_id": 183,
+            "name": "Peio Canales",
+            "team_id": 1
+        },
+        {
+            "player_id": 184,
+            "name": "Francisco Jesús Crespo García",
+            "team_id": 18
+        },
+        {
+            "player_id": 185,
+            "name": "Pelayo Fernández",
+            "team_id": 12
+        },
+        {
+            "player_id": 186,
+            "name": "Pep Chavarría",
+            "team_id": 12
+        },
+        {
+            "player_id": 187,
+            "name": "José Luis García Vayá",
+            "team_id": 19
+        },
+        {
+            "player_id": 188,
+            "name": "Gerard Fernández Castellano",
+            "team_id": 17
+        },
+        {
+            "player_id": 189,
+            "name": "Pere García",
+            "team_id": 11
+        },
+        {
+            "player_id": 190,
+            "name": "Pere Milla",
+            "team_id": 10
+        },
+        {
+            "player_id": 191,
+            "name": "Noah Darvich",
+            "team_id": 6
+        },
+        {
+            "player_id": 192,
+            "name": "Nobel Mendy",
+            "team_id": 13
+        },
+        {
+            "player_id": 193,
+            "name": "Oier Gastesi",
+            "team_id": 1
+        },
+        {
+            "player_id": 194,
+            "name": "Oihan Sancet",
+            "team_id": 1
+        },
+        {
+            "player_id": 195,
+            "name": "Oliver Mcburnie",
+            "team_id": 18
+        },
+        {
+            "player_id": 196,
+            "name": "Omar Alderete",
+            "team_id": 7
+        },
+        {
+            "player_id": 197,
+            "name": "Omar El Hilali",
+            "team_id": 10
+        },
+        {
+            "player_id": 198,
+            "name": "Omar Mascarell",
+            "team_id": 11
+        },
+        {
+            "player_id": 199,
+            "name": "Omar Sadik",
+            "team_id": 10
+        },
+        {
+            "player_id": 200,
+            "name": "Oriol Romeu",
+            "team_id": 8
+        },
+        {
+            "player_id": 201,
+            "name": "Orri Óskarsson",
+            "team_id": 15
+        },
+        {
+            "player_id": 202,
+            "name": "Pablo Barrios",
+            "team_id": 2
+        },
+        {
+            "player_id": 203,
+            "name": "Pablo Busto",
+            "team_id": 13
+        },
+        {
+            "player_id": 204,
+            "name": "Pablo Durán",
+            "team_id": 9
+        },
+        {
+            "player_id": 205,
+            "name": "Pablo Fornals",
+            "team_id": 13
+        },
+        {
+            "player_id": 206,
+            "name": "Pablo Ibáñez",
+            "team_id": 3
+        },
+        {
+            "player_id": 207,
+            "name": "Pablo Maffeo",
+            "team_id": 11
+        },
+        {
+            "player_id": 208,
+            "name": "Pablo Marín",
+            "team_id": 15
+        },
+        {
+            "player_id": 209,
+            "name": "Pablo Rivera",
+            "team_id": 17
+        },
+        {
+            "player_id": 210,
+            "name": "Pablo Torre",
+            "team_id": 6
+        },
+        {
+            "player_id": 211,
+            "name": "Mika Mármol",
+            "team_id": 18
+        },
+        {
+            "player_id": 212,
+            "name": "Mikel Jauregizar",
+            "team_id": 1
+        },
+        {
+            "player_id": 213,
+            "name": "Mikel Oyarzabal",
+            "team_id": 15
+        },
+        {
+            "player_id": 214,
+            "name": "Mikel Vesga",
+            "team_id": 1
+        },
+        {
+            "player_id": 215,
+            "name": "Moi Gómez",
+            "team_id": 3
+        },
+        {
+            "player_id": 216,
+            "name": "Moussa Diarra",
+            "team_id": 5
+        },
+        {
+            "player_id": 217,
+            "name": "Munir El Haddadi",
+            "team_id": 4
+        },
+        {
+            "player_id": 218,
+            "name": "Nabil Aberdin",
+            "team_id": 7
+        },
+        {
+            "player_id": 219,
+            "name": "Nacho Vidal",
+            "team_id": 3
+        },
+        {
+            "player_id": 220,
+            "name": "Naci Ünüvar",
+            "team_id": 10
+        },
+        {
+            "player_id": 221,
+            "name": "Nahuel Molina",
+            "team_id": 2
+        },
+        {
+            "player_id": 222,
+            "name": "Nahuel Tenaglia",
+            "team_id": 5
+        },
+        {
+            "player_id": 223,
+            "name": "Naim García",
+            "team_id": 4
+        },
+        {
+            "player_id": 224,
+            "name": "Natan Bernardo De Souza",
+            "team_id": 13
+        },
+        {
+            "player_id": 225,
+            "name": "Nayef Aguerd",
+            "team_id": 15
+        },
+        {
+            "player_id": 226,
+            "name": "Nemanja Gudelj",
+            "team_id": 17
+        },
+        {
+            "player_id": 227,
+            "name": "Nico Serrano",
+            "team_id": 1
+        },
+        {
+            "player_id": 228,
+            "name": "Nicholas Williams Arthuer",
+            "team_id": 1
+        },
+        {
+            "player_id": 229,
+            "name": "Nicolas Pépé",
+            "team_id": 20
+        },
+        {
+            "player_id": 230,
+            "name": "Marcos Llorente",
+            "team_id": 2
+        },
+        {
+            "player_id": 231,
+            "name": "Marcos Do Nascimento Teixeira",
+            "team_id": 17
+        },
+        {
+            "player_id": 232,
+            "name": "Mario Maroto",
+            "team_id": 16
+        },
+        {
+            "player_id": 233,
+            "name": "Mario Martín",
+            "team_id": 16
+        },
+        {
+            "player_id": 234,
+            "name": "Marko Dmitrovic",
+            "team_id": 4
+        },
+        {
+            "player_id": 235,
+            "name": "Martin Valjent",
+            "team_id": 11
+        },
+        {
+            "player_id": 236,
+            "name": "Martín Tejón",
+            "team_id": 19
+        },
+        {
+            "player_id": 237,
+            "name": "Martín Zubimendi",
+            "team_id": 15
+        },
+        {
+            "player_id": 238,
+            "name": "Marvin Park",
+            "team_id": 18
+        },
+        {
+            "player_id": 239,
+            "name": "Mateo Flores",
+            "team_id": 13
+        },
+        {
+            "player_id": 240,
+            "name": "Mateo Mejía",
+            "team_id": 17
+        },
+        {
+            "player_id": 241,
+            "name": "Mateu Morey",
+            "team_id": 11
+        },
+        {
+            "player_id": 242,
+            "name": "Matija Nastasic",
+            "team_id": 4
+        },
+        {
+            "player_id": 243,
+            "name": "Matías Árbol",
+            "team_id": 17
+        },
+        {
+            "player_id": 244,
+            "name": "Mauro Arambarri",
+            "team_id": 7
+        },
+        {
+            "player_id": 245,
+            "name": "Maximiliano Caufriez",
+            "team_id": 19
+        },
+        {
+            "player_id": 246,
+            "name": "Miguel Gutiérrez",
+            "team_id": 8
+        },
+        {
+            "player_id": 247,
+            "name": "Miguel De La Fuente",
+            "team_id": 4
+        },
+        {
+            "player_id": 248,
+            "name": "Mihailo Ristic",
+            "team_id": 9
+        },
+        {
+            "player_id": 249,
+            "name": "Luka Romero",
+            "team_id": 5
+        },
+        {
+            "player_id": 250,
+            "name": "Luka Sucic",
+            "team_id": 15
+        },
+        {
+            "player_id": 251,
+            "name": "Mamadou Sylla",
+            "team_id": 16
+        },
+        {
+            "player_id": 252,
+            "name": "Manu Bueno",
+            "team_id": 17
+        },
+        {
+            "player_id": 253,
+            "name": "Manu Fuster",
+            "team_id": 18
+        },
+        {
+            "player_id": 254,
+            "name": "Manu González",
+            "team_id": 13
+        },
+        {
+            "player_id": 255,
+            "name": "Manu Morlanes",
+            "team_id": 11
+        },
+        {
+            "player_id": 256,
+            "name": "Manu Sánchez",
+            "team_id": 5
+        },
+        {
+            "player_id": 257,
+            "name": "Marash Kumbulla",
+            "team_id": 10
+        },
+        {
+            "player_id": 258,
+            "name": "Marc Bartra",
+            "team_id": 13
+        },
+        {
+            "player_id": 259,
+            "name": "Marc Bernal",
+            "team_id": 6
+        },
+        {
+            "player_id": 260,
+            "name": "Marc Cardona",
+            "team_id": 18
+        },
+        {
+            "player_id": 261,
+            "name": "Marc Casadó",
+            "team_id": 6
+        },
+        {
+            "player_id": 262,
+            "name": "Marc Domenech",
+            "team_id": 11
+        },
+        {
+            "player_id": 263,
+            "name": "Marc Roca",
+            "team_id": 13
+        },
+        {
+            "player_id": 264,
+            "name": "Marc Vidal",
+            "team_id": 9
+        },
+        {
+            "player_id": 265,
+            "name": "Marc-André Ter Stegen",
+            "team_id": 6
+        },
+        {
+            "player_id": 266,
+            "name": "Marco De Las Sias",
+            "team_id": 12
+        },
+        {
+            "player_id": 267,
+            "name": "Marcos Alonso",
+            "team_id": 9
+        },
+        {
+            "player_id": 268,
+            "name": "Marcos André De Sousa Mendonça",
+            "team_id": 16
+        },
+        {
+            "player_id": 269,
+            "name": "Lamine Yamal Nasraoui Ebana",
+            "team_id": 6
+        },
+        {
+            "player_id": 270,
+            "name": "Leandro Cabrera",
+            "team_id": 10
+        },
+        {
+            "player_id": 271,
+            "name": "Leo Román",
+            "team_id": 11
+        },
+        {
+            "player_id": 272,
+            "name": "Llorenç Serred",
+            "team_id": 10
+        },
+        {
+            "player_id": 273,
+            "name": "Logan Evans Costa",
+            "team_id": 20
+        },
+        {
+            "player_id": 274,
+            "name": "Lorenzo Aguado Herrera",
+            "team_id": 14
+        },
+        {
+            "player_id": 275,
+            "name": "Loïc Badé",
+            "team_id": 17
+        },
+        {
+            "player_id": 276,
+            "name": "Luca De La Torre",
+            "team_id": 9
+        },
+        {
+            "player_id": 277,
+            "name": "Lucas Alcázar",
+            "team_id": 13
+        },
+        {
+            "player_id": 278,
+            "name": "Lucas García Madrigal",
+            "team_id": 8
+        },
+        {
+            "player_id": 279,
+            "name": "Lucas Oliveira Rosa",
+            "team_id": 16
+        },
+        {
+            "player_id": 280,
+            "name": "Lucas Torró",
+            "team_id": 3
+        },
+        {
+            "player_id": 281,
+            "name": "Lucas Vázquez",
+            "team_id": 14
+        },
+        {
+            "player_id": 282,
+            "name": "Lucien Agoumé",
+            "team_id": 17
+        },
+        {
+            "player_id": 283,
+            "name": "Luis Milla",
+            "team_id": 7
+        },
+        {
+            "player_id": 284,
+            "name": "Luis Pérez",
+            "team_id": 16
+        },
+        {
+            "player_id": 285,
+            "name": "Luis Rioja",
+            "team_id": 19
+        },
+        {
+            "player_id": 286,
+            "name": "Luiz Lúcio Reis Júnior",
+            "team_id": 20
+        },
+        {
+            "player_id": 287,
+            "name": "Luka Modric",
+            "team_id": 14
+        },
+        {
+            "player_id": 288,
+            "name": "Jules Koundé",
+            "team_id": 6
+        },
+        {
+            "player_id": 289,
+            "name": "Julián Álvarez",
+            "team_id": 2
+        },
+        {
+            "player_id": 290,
+            "name": "Julián Chicco",
+            "team_id": 4
+        },
+        {
+            "player_id": 291,
+            "name": "Juma Bah",
+            "team_id": 16
+        },
+        {
+            "player_id": 292,
+            "name": "Justin Smith",
+            "team_id": 10
+        },
+        {
+            "player_id": 293,
+            "name": "Karl Hein",
+            "team_id": 16
+        },
+        {
+            "player_id": 294,
+            "name": "Kelechi Iheanacho",
+            "team_id": 17
+        },
+        {
+            "player_id": 295,
+            "name": "Robert Kenedy Nunes Do Nascimento",
+            "team_id": 16
+        },
+        {
+            "player_id": 296,
+            "name": "Kike Barja",
+            "team_id": 3
+        },
+        {
+            "player_id": 297,
+            "name": "Kike García",
+            "team_id": 5
+        },
+        {
+            "player_id": 298,
+            "name": "Kike Pérez",
+            "team_id": 16
+        },
+        {
+            "player_id": 299,
+            "name": "Kike Salas",
+            "team_id": 17
+        },
+        {
+            "player_id": 300,
+            "name": "Kiko Femenía",
+            "team_id": 20
+        },
+        {
+            "player_id": 301,
+            "name": "Min-Su Kim",
+            "team_id": 8
+        },
+        {
+            "player_id": 302,
+            "name": "Kirian Rodríguez",
+            "team_id": 18
+        },
+        {
+            "player_id": 303,
+            "name": "Jorge Iglesias González",
+            "team_id": 16
+        },
+        {
+            "player_id": 304,
+            "name": "Jorge Resurrección Merodio",
+            "team_id": 2
+        },
+        {
+            "player_id": 305,
+            "name": "Kylian Mbappé",
+            "team_id": 14
+        },
+        {
+            "player_id": 306,
+            "name": "Ladislav Krejcí",
+            "team_id": 8
+        },
+        {
+            "player_id": 307,
+            "name": "José Giménez",
+            "team_id": 2
+        },
+        {
+            "player_id": 308,
+            "name": "José Ángel Carmona",
+            "team_id": 17
+        },
+        {
+            "player_id": 309,
+            "name": "João Urbáez",
+            "team_id": 4
+        },
+        {
+            "player_id": 310,
+            "name": "Juan Bernat",
+            "team_id": 20
+        },
+        {
+            "player_id": 311,
+            "name": "Juan Berrocal",
+            "team_id": 7
+        },
+        {
+            "player_id": 312,
+            "name": "Juan Carlos Martín Corral",
+            "team_id": 8
+        },
+        {
+            "player_id": 313,
+            "name": "Juan Cruz",
+            "team_id": 4
+        },
+        {
+            "player_id": 314,
+            "name": "Juan Cruz Álvaro Armada",
+            "team_id": 3
+        },
+        {
+            "player_id": 315,
+            "name": "Juan Foyth",
+            "team_id": 20
+        },
+        {
+            "player_id": 316,
+            "name": "Juan Herzog",
+            "team_id": 18
+        },
+        {
+            "player_id": 317,
+            "name": "Juan Iglesias",
+            "team_id": 7
+        },
+        {
+            "player_id": 318,
+            "name": "Juan Musso",
+            "team_id": 2
+        },
+        {
+            "player_id": 319,
+            "name": "Juan Soriano",
+            "team_id": 4
+        },
+        {
+            "player_id": 320,
+            "name": "Juanlu Sánchez",
+            "team_id": 17
+        },
+        {
+            "player_id": 321,
+            "name": "Juan Miguel Jiménez López",
+            "team_id": 13
+        },
+        {
+            "player_id": 322,
+            "name": "Juanmi Latasa",
+            "team_id": 16
+        },
+        {
+            "player_id": 323,
+            "name": "Juan Pedro Ramírez López",
+            "team_id": 8
+        },
+        {
+            "player_id": 324,
+            "name": "Jude Bellingham",
+            "team_id": 14
+        },
+        {
+            "player_id": 325,
+            "name": "Julen Agirrezabala",
+            "team_id": 1
+        },
+        {
+            "player_id": 326,
+            "name": "Julen Lartitegi",
+            "team_id": 5
+        },
+        {
+            "player_id": 327,
+            "name": "Johan Mojica",
+            "team_id": 11
+        },
+        {
+            "player_id": 328,
+            "name": "John Patrick",
+            "team_id": 7
+        },
+        {
+            "player_id": 329,
+            "name": "Johnny Cardoso",
+            "team_id": 13
+        },
+        {
+            "player_id": 330,
+            "name": "Jon Aramburu",
+            "team_id": 15
+        },
+        {
+            "player_id": 331,
+            "name": "Jon Guridi",
+            "team_id": 5
+        },
+        {
+            "player_id": 332,
+            "name": "Jon Magunazelaia",
+            "team_id": 15
+        },
+        {
+            "player_id": 333,
+            "name": "Jon Martín",
+            "team_id": 15
+        },
+        {
+            "player_id": 334,
+            "name": "Jon Moncayola",
+            "team_id": 3
+        },
+        {
+            "player_id": 335,
+            "name": "Jon Olasagasti",
+            "team_id": 15
+        },
+        {
+            "player_id": 336,
+            "name": "Jon Pacheco",
+            "team_id": 15
+        },
+        {
+            "player_id": 337,
+            "name": "Jonathan Bamba",
+            "team_id": 9
+        },
+        {
+            "player_id": 338,
+            "name": "Joni Montiel",
+            "team_id": 12
+        },
+        {
+            "player_id": 339,
+            "name": "Jorge Herrando",
+            "team_id": 3
+        },
+        {
+            "player_id": 340,
+            "name": "Jorge Sáenz",
+            "team_id": 4
+        },
+        {
+            "player_id": 341,
+            "name": "Jorge De Frutos",
+            "team_id": 12
+        },
+        {
+            "player_id": 342,
+            "name": "Joseph Aidoo",
+            "team_id": 9
+        },
+        {
+            "player_id": 343,
+            "name": "José Arnáiz",
+            "team_id": 3
+        },
+        {
+            "player_id": 344,
+            "name": "José Campaña",
+            "team_id": 18
+        },
+        {
+            "player_id": 345,
+            "name": "José Gayà",
+            "team_id": 19
+        },
+        {
+            "player_id": 346,
+            "name": "José Gragera",
+            "team_id": 10
+        },
+        {
+            "player_id": 347,
+            "name": "Javi Muñoz",
+            "team_id": 18
+        },
+        {
+            "player_id": 348,
+            "name": "Javi Puado",
+            "team_id": 10
+        },
+        {
+            "player_id": 349,
+            "name": "Javi Rodríguez",
+            "team_id": 9
+        },
+        {
+            "player_id": 350,
+            "name": "Javi Serrano",
+            "team_id": 2
+        },
+        {
+            "player_id": 351,
+            "name": "Javi Sánchez De Felipe",
+            "team_id": 16
+        },
+        {
+            "player_id": 352,
+            "name": "Javier Manquillo",
+            "team_id": 9
+        },
+        {
+            "player_id": 353,
+            "name": "Javier Martón",
+            "team_id": 1
+        },
+        {
+            "player_id": 354,
+            "name": "Jesús Areso",
+            "team_id": 3
+        },
+        {
+            "player_id": 355,
+            "name": "Jesús Navas",
+            "team_id": 17
+        },
+        {
+            "player_id": 356,
+            "name": "Jesús Owono",
+            "team_id": 5
+        },
+        {
+            "player_id": 357,
+            "name": "Jesús Rodriguez",
+            "team_id": 13
+        },
+        {
+            "player_id": 358,
+            "name": "Jesús Vallejo",
+            "team_id": 14
+        },
+        {
+            "player_id": 359,
+            "name": "Jesús Vázquez",
+            "team_id": 19
+        },
+        {
+            "player_id": 360,
+            "name": "Jhon Solís",
+            "team_id": 8
+        },
+        {
+            "player_id": 361,
+            "name": "Jirí Letácek",
+            "team_id": 7
+        },
+        {
+            "player_id": 362,
+            "name": "Joan García",
+            "team_id": 10
+        },
+        {
+            "player_id": 363,
+            "name": "Joan Jordán",
+            "team_id": 5
+        },
+        {
+            "player_id": 364,
+            "name": "Joaquín Panichelli",
+            "team_id": null
+        },
+        {
+            "player_id": 365,
+            "name": "Joel Roca",
+            "team_id": null
+        },
+        {
+            "player_id": 366,
+            "name": "Jofre Carreras",
+            "team_id": 10
+        },
+        {
+            "player_id": 367,
+            "name": "Ignacio Peña Sotorres",
+            "team_id": 6
+        },
+        {
+            "player_id": 368,
+            "name": "Iñaki Rupérez",
+            "team_id": 15
+        },
+        {
+            "player_id": 369,
+            "name": "Iñaki Williams",
+            "team_id": 1
+        },
+        {
+            "player_id": 370,
+            "name": "Íñigo Martínez",
+            "team_id": 6
+        },
+        {
+            "player_id": 371,
+            "name": "Jackson Porozo",
+            "team_id": 4
+        },
+        {
+            "player_id": 372,
+            "name": "Jacobo Ramón",
+            "team_id": 14
+        },
+        {
+            "player_id": 373,
+            "name": "Jailson Marques Siqueira",
+            "team_id": 9
+        },
+        {
+            "player_id": 374,
+            "name": "Jaime Mata",
+            "team_id": 18
+        },
+        {
+            "player_id": 375,
+            "name": "James Rodríguez",
+            "team_id": 12
+        },
+        {
+            "player_id": 376,
+            "name": "Jan Oblak",
+            "team_id": 2
+        },
+        {
+            "player_id": 377,
+            "name": "Jan Salas",
+            "team_id": 11
+        },
+        {
+            "player_id": 378,
+            "name": "Jasper Cillessen",
+            "team_id": 18
+        },
+        {
+            "player_id": 379,
+            "name": "Antonino Jastin García López",
+            "team_id": 8
+        },
+        {
+            "player_id": 380,
+            "name": "Jaume Domènech",
+            "team_id": 19
+        },
+        {
+            "player_id": 381,
+            "name": "Javi Galán",
+            "team_id": 2
+        },
+        {
+            "player_id": 382,
+            "name": "Javi Guerra",
+            "team_id": 19
+        },
+        {
+            "player_id": 383,
+            "name": "Javi Hernández",
+            "team_id": 4
+        },
+        {
+            "player_id": 384,
+            "name": "Javi Llabrés",
+            "team_id": 11
+        },
+        {
+            "player_id": 385,
+            "name": "Javi López",
+            "team_id": 15
+        },
+        {
+            "player_id": 386,
+            "name": "Javi Martínez",
+            "team_id": 3
+        },
+        {
+            "player_id": 387,
+            "name": "Iker Bachiller",
+            "team_id": 4
+        },
+        {
+            "player_id": 388,
+            "name": "Iker Benito",
+            "team_id": 3
+        },
+        {
+            "player_id": 389,
+            "name": "Iker Córdoba",
+            "team_id": 19
+        },
+        {
+            "player_id": 390,
+            "name": "Iker Losada",
+            "team_id": 13
+        },
+        {
+            "player_id": 391,
+            "name": "Iker Muñoz",
+            "team_id": 3
+        },
+        {
+            "player_id": 392,
+            "name": "Moriba Kourouma Kourouma",
+            "team_id": 9
+        },
+        {
+            "player_id": 393,
+            "name": "Ilias Kostis",
+            "team_id": 2
+        },
+        {
+            "player_id": 394,
+            "name": "Irvin Cardona",
+            "team_id": 10
+        },
+        {
+            "player_id": 395,
+            "name": "Isaac Romero",
+            "team_id": 17
+        },
+        {
+            "player_id": 396,
+            "name": "Francisco Román Alarcón Suárez",
+            "team_id": 13
+        },
+        {
+            "player_id": 397,
+            "name": "Isi Palazón",
+            "team_id": 12
+        },
+        {
+            "player_id": 398,
+            "name": "Israel Domínguez",
+            "team_id": 17
+        },
+        {
+            "player_id": 399,
+            "name": "Iván Balliu",
+            "team_id": 12
+        },
+        {
+            "player_id": 400,
+            "name": "Iván Cuéllar",
+            "team_id": 11
+        },
+        {
+            "player_id": 401,
+            "name": "Iván Gil",
+            "team_id": 18
+        },
+        {
+            "player_id": 402,
+            "name": "Iván Martín",
+            "team_id": 8
+        },
+        {
+            "player_id": 403,
+            "name": "Iván Sánchez Aguayo",
+            "team_id": 16
+        },
+        {
+            "player_id": 404,
+            "name": "Iván Villar",
+            "team_id": 9
+        },
+        {
+            "player_id": 405,
+            "name": "Giovani Lo Celso",
+            "team_id": 13
+        },
+        {
+            "player_id": 406,
+            "name": "Giuliano Simeone",
+            "team_id": 2
+        },
+        {
+            "player_id": 407,
+            "name": "Gonzalo García",
+            "team_id": 14
+        },
+        {
+            "player_id": 408,
+            "name": "Gonzalo Montiel",
+            "team_id": 17
+        },
+        {
+            "player_id": 409,
+            "name": "Gorka Guruzeta",
+            "team_id": 1
+        },
+        {
+            "player_id": 410,
+            "name": "Gorka Rivera",
+            "team_id": 7
+        },
+        {
+            "player_id": 411,
+            "name": "Guille Fernández",
+            "team_id": 6
+        },
+        {
+            "player_id": 412,
+            "name": "Guillem Trilla",
+            "team_id": 7
+        },
+        {
+            "player_id": 413,
+            "name": "Hamari Traoré",
+            "team_id": 15
+        },
+        {
+            "player_id": 414,
+            "name": "Hugo Duro",
+            "team_id": 19
+        },
+        {
+            "player_id": 415,
+            "name": "Hugo Guillamón",
+            "team_id": 19
+        },
+        {
+            "player_id": 416,
+            "name": "Hugo Novoa",
+            "team_id": 5
+        },
+        {
+            "player_id": 417,
+            "name": "Hugo Sotelo",
+            "team_id": 9
+        },
+        {
+            "player_id": 418,
+            "name": "Hugo Álvarez",
+            "team_id": 9
+        },
+        {
+            "player_id": 419,
+            "name": "Héctor Bellerín",
+            "team_id": 13
+        },
+        {
+            "player_id": 420,
+            "name": "Héctor Fort",
+            "team_id": 6
+        },
+        {
+            "player_id": 421,
+            "name": "Iago Aspas",
+            "team_id": 9
+        },
+        {
+            "player_id": 422,
+            "name": "Igor Zubeldia",
+            "team_id": 15
+        },
+        {
+            "player_id": 423,
+            "name": "Ferran Torres",
+            "team_id": 6
+        },
+        {
+            "player_id": 424,
+            "name": "Ferrán Ruiz Martí",
+            "team_id": 8
+        },
+        {
+            "player_id": 425,
+            "name": "Florian Lejeune",
+            "team_id": 12
+        },
+        {
+            "player_id": 426,
+            "name": "Fran Beltrán",
+            "team_id": 9
+        },
+        {
+            "player_id": 427,
+            "name": "Fran García",
+            "team_id": 14
+        },
+        {
+            "player_id": 428,
+            "name": "Francisco Javier González Pérez",
+            "team_id": 14
+        },
+        {
+            "player_id": 429,
+            "name": "Fran Pérez",
+            "team_id": 19
+        },
+        {
+            "player_id": 430,
+            "name": "Francisco Barbosa Vieites",
+            "team_id": 13
+        },
+        {
+            "player_id": 431,
+            "name": "Franco Cervi",
+            "team_id": 9
+        },
+        {
+            "player_id": 432,
+            "name": "Frenkie De Jong",
+            "team_id": 6
+        },
+        {
+            "player_id": 433,
+            "name": "Fábio Daniel Soares Silva",
+            "team_id": 18
+        },
+        {
+            "player_id": 434,
+            "name": "Gabriel Misehouy",
+            "team_id": 8
+        },
+        {
+            "player_id": 435,
+            "name": "Álvaro Miguel García Pascual",
+            "team_id": 17
+        },
+        {
+            "player_id": 436,
+            "name": "Pablo Páez Gavira",
+            "team_id": 6
+        },
+        {
+            "player_id": 437,
+            "name": "Gerard Gumbau",
+            "team_id": 12
+        },
+        {
+            "player_id": 438,
+            "name": "Gerard Martín",
+            "team_id": 6
+        },
+        {
+            "player_id": 439,
+            "name": "Gerard Moreno",
+            "team_id": 20
+        },
+        {
+            "player_id": 440,
+            "name": "Germán Valera",
+            "team_id": 19
+        },
+        {
+            "player_id": 441,
+            "name": "Gerónimo Spina",
+            "team_id": 2
+        },
+        {
+            "player_id": 442,
+            "name": "Giorgi Mamardashvili",
+            "team_id": 19
+        },
+        {
+            "player_id": 443,
+            "name": "Egoitz Muñoz",
+            "team_id": 5
+        },
+        {
+            "player_id": 444,
+            "name": "Endrick Felipe Moreira De Sousa",
+            "team_id": 14
+        },
+        {
+            "player_id": 445,
+            "name": "Eneko Ortiz",
+            "team_id": 5
+        },
+        {
+            "player_id": 446,
+            "name": "Enric Franquesa",
+            "team_id": 4
+        },
+        {
+            "player_id": 447,
+            "name": "Enric García",
+            "team_id": 8
+        },
+        {
+            "player_id": 448,
+            "name": "Enzo Barrenechea",
+            "team_id": 19
+        },
+        {
+            "player_id": 449,
+            "name": "Enzo Boyomo",
+            "team_id": 3
+        },
+        {
+            "player_id": 450,
+            "name": "Enzo Loiodice",
+            "team_id": 18
+        },
+        {
+            "player_id": 451,
+            "name": "Eray Cömert",
+            "team_id": 16
+        },
+        {
+            "player_id": 452,
+            "name": "Eric Bailly",
+            "team_id": 20
+        },
+        {
+            "player_id": 453,
+            "name": "Eric García",
+            "team_id": 6
+        },
+        {
+            "player_id": 454,
+            "name": "Etienne Eto O Pineda",
+            "team_id": 12
+        },
+        {
+            "player_id": 455,
+            "name": "Karl Edouard Blaise Etta Eyong",
+            "team_id": 20
+        },
+        {
+            "player_id": 456,
+            "name": "Fabio González",
+            "team_id": 18
+        },
+        {
+            "player_id": 457,
+            "name": "Federico Valverde",
+            "team_id": 14
+        },
+        {
+            "player_id": 458,
+            "name": "Ferland Mendy",
+            "team_id": 14
+        },
+        {
+            "player_id": 459,
+            "name": "Fermín López",
+            "team_id": 6
+        },
+        {
+            "player_id": 460,
+            "name": "Fernando Calero",
+            "team_id": 10
+        },
+        {
+            "player_id": 461,
+            "name": "Fernando López",
+            "team_id": 9
+        },
+        {
+            "player_id": 462,
+            "name": "Fernando Pacheco",
+            "team_id": 10
+        },
+        {
+            "player_id": 463,
+            "name": "Diego Ferrer",
+            "team_id": 7
+        },
+        {
+            "player_id": 464,
+            "name": "Diego García",
+            "team_id": 4
+        },
+        {
+            "player_id": 465,
+            "name": "Diego Kochen",
+            "team_id": 6
+        },
+        {
+            "player_id": 466,
+            "name": "Diego Llorente",
+            "team_id": 13
+        },
+        {
+            "player_id": 467,
+            "name": "Diego López",
+            "team_id": 19
+        },
+        {
+            "player_id": 468,
+            "name": "Diego Rico",
+            "team_id": 7
+        },
+        {
+            "player_id": 469,
+            "name": "Dimitri Foulquier",
+            "team_id": 19
+        },
+        {
+            "player_id": 470,
+            "name": "Dimitrios Stamatakis",
+            "team_id": 3
+        },
+        {
+            "player_id": 471,
+            "name": "Dinko Horkas",
+            "team_id": 18
+        },
+        {
+            "player_id": 472,
+            "name": "Djené Dakonam",
+            "team_id": 7
+        },
+        {
+            "player_id": 473,
+            "name": "Djibril Sow",
+            "team_id": 17
+        },
+        {
+            "player_id": 474,
+            "name": "Djordjije Medenica",
+            "team_id": 7
+        },
+        {
+            "player_id": 475,
+            "name": "Dodi Lukébakio",
+            "team_id": 17
+        },
+        {
+            "player_id": 476,
+            "name": "Domingos De Sousa Coutinho Meneses Duarte",
+            "team_id": 7
+        },
+        {
+            "player_id": 477,
+            "name": "Dominik Greif",
+            "team_id": 11
+        },
+        {
+            "player_id": 478,
+            "name": "Donny Van De Beek",
+            "team_id": 8
+        },
+        {
+            "player_id": 479,
+            "name": "Dário Cassia Luís Essugo",
+            "team_id": 18
+        },
+        {
+            "player_id": 480,
+            "name": "Edu Expósito",
+            "team_id": 10
+        },
+        {
+            "player_id": 481,
+            "name": "Eduardo Camavinga",
+            "team_id": 14
+        },
+        {
+            "player_id": 482,
+            "name": "Egoitz Arana",
+            "team_id": 15
+        },
+        {
+            "player_id": 483,
+            "name": "Dani Parejo",
+            "team_id": 20
+        },
+        {
+            "player_id": 484,
+            "name": "Dani Raba",
+            "team_id": 4
+        },
+        {
+            "player_id": 485,
+            "name": "Dani Requena",
+            "team_id": 20
+        },
+        {
+            "player_id": 486,
+            "name": "Dani Rodríguez",
+            "team_id": 11
+        },
+        {
+            "player_id": 487,
+            "name": "Dani Vivian",
+            "team_id": 1
+        },
+        {
+            "player_id": 488,
+            "name": "Daniel Luna",
+            "team_id": 11
+        },
+        {
+            "player_id": 489,
+            "name": "Daniel Yáñez",
+            "team_id": 14
+        },
+        {
+            "player_id": 490,
+            "name": "Darko Brasanac",
+            "team_id": 4
+        },
+        {
+            "player_id": 491,
+            "name": "Darwin Machís",
+            "team_id": 16
+        },
+        {
+            "player_id": 492,
+            "name": "Darío Benavides",
+            "team_id": 17
+        },
+        {
+            "player_id": 493,
+            "name": "David Argüelles",
+            "team_id": 7
+        },
+        {
+            "player_id": 494,
+            "name": "David Jiménez",
+            "team_id": 14
+        },
+        {
+            "player_id": 495,
+            "name": "David López",
+            "team_id": 8
+        },
+        {
+            "player_id": 496,
+            "name": "David Otorbi",
+            "team_id": 19
+        },
+        {
+            "player_id": 497,
+            "name": "David Soria",
+            "team_id": 7
+        },
+        {
+            "player_id": 498,
+            "name": "David Torres",
+            "team_id": 16
+        },
+        {
+            "player_id": 499,
+            "name": "Dawda Camara",
+            "team_id": 8
+        },
+        {
+            "player_id": 500,
+            "name": "Denis Suárez",
+            "team_id": 20
+        },
+        {
+            "player_id": 501,
+            "name": "Diego Aguado Facio",
+            "team_id": 14
+        },
+        {
+            "player_id": 502,
+            "name": "Diego Conde",
+            "team_id": 20
+        },
+        {
+            "player_id": 503,
+            "name": "Clément Lenglet",
+            "team_id": 2
+        },
+        {
+            "player_id": 504,
+            "name": "Coba Da Costa",
+            "team_id": 7
+        },
+        {
+            "player_id": 505,
+            "name": "Conor Gallagher",
+            "team_id": 2
+        },
+        {
+            "player_id": 506,
+            "name": "José Manuel Arias Copete",
+            "team_id": 11
+        },
+        {
+            "player_id": 507,
+            "name": "Cristhian Mosquera",
+            "team_id": 19
+        },
+        {
+            "player_id": 508,
+            "name": "Cristhian Stuani",
+            "team_id": 8
+        },
+        {
+            "player_id": 509,
+            "name": "Cyle Larin",
+            "team_id": 11
+        },
+        {
+            "player_id": 510,
+            "name": "Cédric Bakambu",
+            "team_id": 13
+        },
+        {
+            "player_id": 511,
+            "name": "César Azpilicueta",
+            "team_id": 2
+        },
+        {
+            "player_id": 512,
+            "name": "César Fernández",
+            "team_id": 9
+        },
+        {
+            "player_id": 513,
+            "name": "César Tárrega",
+            "team_id": 19
+        },
+        {
+            "player_id": 514,
+            "name": "César De La Hoz",
+            "team_id": 16
+        },
+        {
+            "player_id": 515,
+            "name": "Daley Blind",
+            "team_id": 8
+        },
+        {
+            "player_id": 516,
+            "name": "Daley Sinkgraven",
+            "team_id": 18
+        },
+        {
+            "player_id": 517,
+            "name": "Damián Rodríguez",
+            "team_id": 9
+        },
+        {
+            "player_id": 518,
+            "name": "Dani Carvajal",
+            "team_id": 14
+        },
+        {
+            "player_id": 519,
+            "name": "Dani Ceballos",
+            "team_id": 14
+        },
+        {
+            "player_id": 520,
+            "name": "Dani Cárdenas",
+            "team_id": 12
+        },
+        {
+            "player_id": 521,
+            "name": "Dani Gómez",
+            "team_id": 19
+        },
+        {
+            "player_id": 522,
+            "name": "Dani Olmo",
+            "team_id": 6
+        },
+        {
+            "player_id": 523,
+            "name": "Brian Oliván",
+            "team_id": 10
+        },
+        {
+            "player_id": 524,
+            "name": "Bryan Gil",
+            "team_id": 8
+        },
+        {
+            "player_id": 525,
+            "name": "Bryan Zaragoza",
+            "team_id": 3
+        },
+        {
+            "player_id": 526,
+            "name": "Carl Starfelt",
+            "team_id": 9
+        },
+        {
+            "player_id": 527,
+            "name": "Carles Aleñá",
+            "team_id": 7
+        },
+        {
+            "player_id": 528,
+            "name": "Carles Pérez",
+            "team_id": 7
+        },
+        {
+            "player_id": 529,
+            "name": "Carlos Benavídez",
+            "team_id": 5
+        },
+        {
+            "player_id": 530,
+            "name": "Carlos Domínguez",
+            "team_id": 9
+        },
+        {
+            "player_id": 531,
+            "name": "Carlos Guirao",
+            "team_id": 13
+        },
+        {
+            "player_id": 532,
+            "name": "Carlos Martín",
+            "team_id": 5
+        },
+        {
+            "player_id": 533,
+            "name": "Carlos Romero",
+            "team_id": 10
+        },
+        {
+            "player_id": 534,
+            "name": "Carlos Vicente",
+            "team_id": 5
+        },
+        {
+            "player_id": 535,
+            "name": "José Luis Català Vázquez",
+            "team_id": 10
+        },
+        {
+            "player_id": 536,
+            "name": "Cenk Özkacar",
+            "team_id": 16
+        },
+        {
+            "player_id": 537,
+            "name": "José María Andres Baixauli",
+            "team_id": 14
+        },
+        {
+            "player_id": 538,
+            "name": "Chidera Ejuke",
+            "team_id": 17
+        },
+        {
+            "player_id": 539,
+            "name": "Chimy Ávila",
+            "team_id": 13
+        },
+        {
+            "player_id": 540,
+            "name": "Francisco Jorge Tavares Oliveira",
+            "team_id": 11
+        },
+        {
+            "player_id": 541,
+            "name": "Christantus Uche",
+            "team_id": 7
+        },
+        {
+            "player_id": 542,
+            "name": "Iván Cantalejo",
+            "team_id": 16
+        },
+        {
+            "player_id": 543,
+            "name": "Arnau Martínez",
+            "team_id": 8
+        },
+        {
+            "player_id": 544,
+            "name": "Arnau Rafús",
+            "team_id": 16
+        },
+        {
+            "player_id": 545,
+            "name": "Arnau Solà",
+            "team_id": 20
+        },
+        {
+            "player_id": 546,
+            "name": "Arnaut Danjuma",
+            "team_id": 8
+        },
+        {
+            "player_id": 547,
+            "name": "Asier Villalibre",
+            "team_id": 5
+        },
+        {
+            "player_id": 548,
+            "name": "Assane Diao",
+            "team_id": 13
+        },
+        {
+            "player_id": 549,
+            "name": "Augusto Batalla",
+            "team_id": 12
+        },
+        {
+            "player_id": 550,
+            "name": "Aurélien Tchouaméni",
+            "team_id": 14
+        },
+        {
+            "player_id": 551,
+            "name": "Axel Witsel",
+            "team_id": 2
+        },
+        {
+            "player_id": 552,
+            "name": "Ayoze Pérez",
+            "team_id": 20
+        },
+        {
+            "player_id": 553,
+            "name": "Benito Ramírez",
+            "team_id": 18
+        },
+        {
+            "player_id": 554,
+            "name": "Bertug Yildirim",
+            "team_id": 7
+        },
+        {
+            "player_id": 555,
+            "name": "Beñat Prados",
+            "team_id": 1
+        },
+        {
+            "player_id": 556,
+            "name": "Beñat Turrientes",
+            "team_id": 15
+        },
+        {
+            "player_id": 557,
+            "name": "Bojan Miovski",
+            "team_id": 8
+        },
+        {
+            "player_id": 558,
+            "name": "Borja Iglesias",
+            "team_id": 9
+        },
+        {
+            "player_id": 559,
+            "name": "Borja Mayoral",
+            "team_id": 7
+        },
+        {
+            "player_id": 560,
+            "name": "Brahim Díaz",
+            "team_id": 14
+        },
+        {
+            "player_id": 561,
+            "name": "Brais Méndez",
+            "team_id": 15
+        },
+        {
+            "player_id": 562,
+            "name": "Domingos André Ribeiro Almeida",
+            "team_id": 19
+        },
+        {
+            "player_id": 563,
+            "name": "André Filipe Magalhães Ribeiro Ferreira",
+            "team_id": 16
+        },
+        {
+            "player_id": 564,
+            "name": "Andrés Cuenca",
+            "team_id": 6
+        },
+        {
+            "player_id": 565,
+            "name": "Ansu Fati",
+            "team_id": 6
+        },
+        {
+            "player_id": 566,
+            "name": "Ante Budimir",
+            "team_id": 3
+        },
+        {
+            "player_id": 567,
+            "name": "Antoine Griezmann",
+            "team_id": 2
+        },
+        {
+            "player_id": 568,
+            "name": "Antonio Blanco",
+            "team_id": 5
+        },
+        {
+            "player_id": 569,
+            "name": "Antonio Espigares",
+            "team_id": 20
+        },
+        {
+            "player_id": 570,
+            "name": "Antonio Gomis",
+            "team_id": 2
+        },
+        {
+            "player_id": 571,
+            "name": "Antonio Raíllo",
+            "team_id": 11
+        },
+        {
+            "player_id": 572,
+            "name": "Antonio Rüdiger",
+            "team_id": 14
+        },
+        {
+            "player_id": 573,
+            "name": "Antonio Sivera",
+            "team_id": 5
+        },
+        {
+            "player_id": 574,
+            "name": "Antonio Sánchez",
+            "team_id": 11
+        },
+        {
+            "player_id": 575,
+            "name": "Antoniu Roca",
+            "team_id": 10
+        },
+        {
+            "player_id": 576,
+            "name": "Anuar Tuhami",
+            "team_id": 16
+        },
+        {
+            "player_id": 577,
+            "name": "Arda Güler",
+            "team_id": 14
+        },
+        {
+            "player_id": 578,
+            "name": "Aridane Hernández",
+            "team_id": 12
+        },
+        {
+            "player_id": 579,
+            "name": "Aritz Elustondo",
+            "team_id": 15
+        },
+        {
+            "player_id": 580,
+            "name": "Arkaitz Mariezkurrena",
+            "team_id": 15
+        },
+        {
+            "player_id": 581,
+            "name": "Domingos André Ribeiro Almeida",
+            "team_id": 19
+        },
+        {
+            "player_id": 582,
+            "name": "André Filipe Magalhães Ribeiro Ferreira",
+            "team_id": 16
+        },
+        {
+            "player_id": 583,
+            "name": "Andrés Cuenca",
+            "team_id": 6
+        },
+        {
+            "player_id": 584,
+            "name": "Ansu Fati",
+            "team_id": 6
+        },
+        {
+            "player_id": 585,
+            "name": "Ante Budimir",
+            "team_id": 3
+        },
+        {
+            "player_id": 586,
+            "name": "Antoine Griezmann",
+            "team_id": 2
+        },
+        {
+            "player_id": 587,
+            "name": "Antonio Blanco",
+            "team_id": 5
+        },
+        {
+            "player_id": 588,
+            "name": "Antonio Espigares",
+            "team_id": 20
+        },
+        {
+            "player_id": 589,
+            "name": "Antonio Gomis",
+            "team_id": 2
+        },
+        {
+            "player_id": 590,
+            "name": "Antonio Raíllo",
+            "team_id": 11
+        },
+        {
+            "player_id": 591,
+            "name": "Antonio Rüdiger",
+            "team_id": 14
+        },
+        {
+            "player_id": 592,
+            "name": "Antonio Sivera",
+            "team_id": 5
+        },
+        {
+            "player_id": 593,
+            "name": "Antonio Sánchez",
+            "team_id": 11
+        },
+        {
+            "player_id": 594,
+            "name": "Antoniu Roca",
+            "team_id": 10
+        },
+        {
+            "player_id": 595,
+            "name": "Anuar Tuhami",
+            "team_id": 16
+        },
+        {
+            "player_id": 596,
+            "name": "Arda Güler",
+            "team_id": 14
+        },
+        {
+            "player_id": 597,
+            "name": "Aridane Hernández",
+            "team_id": 12
+        },
+        {
+            "player_id": 598,
+            "name": "Aritz Elustondo",
+            "team_id": 15
+        },
+        {
+            "player_id": 599,
+            "name": "Arkaitz Mariezkurrena",
+            "team_id": null
+        },
+        {
+            "player_id": 600,
+            "name": "André Filipe Magalhães Ribeiro Ferreira",
+            "team_id": 16
+        },
+        {
+            "player_id": 601,
+            "name": "Andrés Cuenca",
+            "team_id": 6
+        },
+        {
+            "player_id": 602,
+            "name": "Ansu Fati",
+            "team_id": 6
+        },
+        {
+            "player_id": 603,
+            "name": "Ante Budimir",
+            "team_id": 3
+        },
+        {
+            "player_id": 604,
+            "name": "Antoine Griezmann",
+            "team_id": 2
+        },
+        {
+            "player_id": 605,
+            "name": "Antonio Blanco",
+            "team_id": 5
+        },
+        {
+            "player_id": 606,
+            "name": "Antonio Espigares",
+            "team_id": 20
+        },
+        {
+            "player_id": 607,
+            "name": "Antonio Gomis",
+            "team_id": 2
+        },
+        {
+            "player_id": 608,
+            "name": "Antonio Raíllo",
+            "team_id": 11
+        },
+        {
+            "player_id": 609,
+            "name": "Antonio Rüdiger",
+            "team_id": 14
+        },
+        {
+            "player_id": 610,
+            "name": "Antonio Sivera",
+            "team_id": 5
+        },
+        {
+            "player_id": 611,
+            "name": "Antonio Sánchez",
+            "team_id": 11
+        },
+        {
+            "player_id": 612,
+            "name": "Antoniu Roca",
+            "team_id": 10
+        },
+        {
+            "player_id": 613,
+            "name": "Anuar Tuhami",
+            "team_id": 16
+        },
+        {
+            "player_id": 614,
+            "name": "Arda Güler",
+            "team_id": 14
+        },
+        {
+            "player_id": 615,
+            "name": "Aridane Hernández",
+            "team_id": 12
+        },
+        {
+            "player_id": 616,
+            "name": "Aritz Elustondo",
+            "team_id": 15
+        },
+        {
+            "player_id": 617,
+            "name": "Arkaitz Mariezkurrena",
+            "team_id": 15
+        },
+        {
+            "player_id": 618,
+            "name": "Domingos André Ribeiro Almeida",
+            "team_id": 19
+        },
+        {
+            "player_id": 619,
+            "name": "André Filipe Magalhães Ribeiro Ferreira",
+            "team_id": 16
+        },
+        {
+            "player_id": 620,
+            "name": "Andrés Cuenca",
+            "team_id": 6
+        },
+        {
+            "player_id": 621,
+            "name": "Ansu Fati",
+            "team_id": 6
+        },
+        {
+            "player_id": 622,
+            "name": "Ante Budimir",
+            "team_id": 3
+        },
+        {
+            "player_id": 623,
+            "name": "Antoine Griezmann",
+            "team_id": 2
+        },
+        {
+            "player_id": 624,
+            "name": "Antonio Blanco",
+            "team_id": 5
+        },
+        {
+            "player_id": 625,
+            "name": "Antonio Espigares",
+            "team_id": 20
+        },
+        {
+            "player_id": 626,
+            "name": "Antonio Gomis",
+            "team_id": 2
+        },
+        {
+            "player_id": 627,
+            "name": "Antonio Raíllo",
+            "team_id": 11
+        },
+        {
+            "player_id": 628,
+            "name": "Antonio Rüdiger",
+            "team_id": 14
+        },
+        {
+            "player_id": 629,
+            "name": "Antonio Sivera",
+            "team_id": 5
+        },
+        {
+            "player_id": 630,
+            "name": "Antonio Sánchez",
+            "team_id": 11
+        },
+        {
+            "player_id": 631,
+            "name": "Antoniu Roca",
+            "team_id": 10
+        },
+        {
+            "player_id": 632,
+            "name": "Anuar Tuhami",
+            "team_id": 16
+        },
+        {
+            "player_id": 633,
+            "name": "Arda Güler",
+            "team_id": 14
+        },
+        {
+            "player_id": 634,
+            "name": "Aridane Hernández",
+            "team_id": 12
+        },
+        {
+            "player_id": 635,
+            "name": "Aritz Elustondo",
+            "team_id": 15
+        },
+        {
+            "player_id": 636,
+            "name": "Arkaitz Mariezkurrena",
+            "team_id": 15
+        }
+    ],
+    "attack_statistics": [],
+    "discipline_statistics": [],
+    "classic_statistics": [],
+    "defensive_statistics": [],
+    "efficiency_statistics": [],
+    "player_discipline_statistics": [],
+    "player_classic_statistics": [],
+    "player_defensive_statistics": [],
+    "player_efficiency_statistics": [],
+    "player_attack_statistics": []
+}

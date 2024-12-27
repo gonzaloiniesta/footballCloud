@@ -1,16 +1,13 @@
 from pymongo import MongoClient, errors
-from integrations.interfaces.data_storage import DataStorageInterface
 from typing import Generator, Any, Dict, List
 import json
 
-class MongoDBFootballCloud(DataStorageInterface):
-    def __init__(self, uri: str = "mongodb://admin:adminpassword@localhost:27017/", db_name: str = "football_cloud"):
-        """
-        Initializes a connection to a MongoDB instance.
+class MongoDBFootballCloud:
 
-        Parameters:
-        - uri (str): The MongoDB connection URI.
-        - db_name (str): The name of the database to connect to.
+    def __init__(self, uri: str = "mongodb://admin:adminpassword@localhost:27017/",
+                 db_name: str = "footballcloud_db"):
+        """
+        Initializes the connection to a MongoDB instance.
         """
         self.uri = uri
         self.db_name = db_name
@@ -23,119 +20,97 @@ class MongoDBFootballCloud(DataStorageInterface):
             print(f"❌ Failed to connect to MongoDB: {e}")
             raise
 
+    def get_team_id(self, team_name: str) -> Any:
+        """
+        Retrieves the team ID by its name. If it does not exist, inserts it.
+        """
+        collection = self.db['teams']
+        result = collection.find_one({"name": team_name})
+        if result:
+            return result["_id"]
+        
+        # Insert a new team if it does not exist
+        new_team = {"name": team_name}
+        insert_result = collection.insert_one(new_team)
+        return insert_result.inserted_id
+
+    def get_player_id(self, player_name: str, team_name: str) -> Any:
+        """
+        Retrieves the player ID by their name and team. If it does not exist, inserts it.
+        """
+        collection = self.db['players']
+        team_id = self.get_team_id(team_name)
+        result = collection.find_one({"name": player_name, "team_id": team_id})
+        if result:
+            return result["_id"]
+        
+        # Insert a new player if it does not exist
+        new_player = {"name": player_name, "team_id": team_id}
+        insert_result = collection.insert_one(new_player)
+        return insert_result.inserted_id
+
+    def insert_statistics(self, collection_name: str, id_name: str, entity_id: Any, data: Dict[str, Any]) -> None:
+        """
+        Inserts statistics into the specified collection. If they already exist, updates them.
+        """
+        collection = self.db[collection_name]
+        try:
+            collection.update_one(
+                {id_name: entity_id},
+                {"$set": data},
+                upsert=True
+            )
+            print(f"✅ Statistics inserted or updated in '{collection_name}' for {id_name}={entity_id}.")
+        except Exception as e:
+            print(f"❌ Failed to insert or update statistics in '{collection_name}': {e}")
+
+    def process_player_statistics(self, key: Dict[str, Any], value: Dict[str, Any]) -> None:
+        """
+        Processes and inserts player statistics.
+        """
+        player_name = value['name']
+        team_name = value['team']
+        player_id = self.get_player_id(player_name, team_name)
+
+        table_map = {
+            'Ataques': 'player_attack_statistics',
+            'Disciplina': 'player_discipline_statistics',
+            'Clasico': 'player_classic_statistics',
+            'Defensiva': 'player_defensive_statistics',
+            'Eficiencia': 'player_efficiency_statistics',
+        }
+
+        stats_table = table_map.get(key['stats'])
+        if stats_table:
+            self.insert_statistics(stats_table, 'player_id', player_id, value)
+        else:
+            print(f"Unknown statistics type: {key['stats']} for player '{player_name}'.")
+
+    def process_team_statistics(self, key: Dict[str, Any], value: Dict[str, Any]) -> None:
+        """
+        Processes and inserts team statistics.
+        """
+        team_name = value['team']
+        team_id = self.get_team_id(team_name)
+
+        table_map = {
+            'Ataques': 'attack_statistics',
+            'Disciplina': 'discipline_statistics',
+            'Clasico': 'classic_statistics',
+            'Defensiva': 'defensive_statistics',
+            'Eficiencia': 'efficiency_statistics',
+        }
+
+        stats_table = table_map.get(key['stats'])
+        if stats_table:
+            self.insert_statistics(stats_table, 'team_id', team_id, value)
+        else:
+            print(f"Unknown statistics type: {key['stats']} for team '{team_name}'.")
+
     def get_db(self) -> Generator:
         """
-        Yields a MongoDB database connection and closes it after use.
+        Yields a MongoDB database connection.
         """
         client = MongoClient(self.uri)
         db = client[self.db_name]
-        try:
-            yield db
-        finally:
-            client.close()
-
-    def insert(self, collection_name: str, data: Dict[str, Any]) -> None:
-        """
-        Inserts a single document into the specified collection.
-
-        Parameters:
-        - collection_name (str): The name of the collection.
-        - data (dict): The document to insert.
-        """
-        collection = self.db[collection_name]
-        try:
-            collection.insert_one(data)
-            print(f"✅ Document inserted into '{collection_name}' collection.")
-        except Exception as e:
-            print(f"❌ Error inserting document: {e}")
-
-    def insert_many(self, collection_name: str, data: List[Dict[str, Any]]) -> None:
-        """
-        Inserts multiple documents into the specified collection.
-
-        Parameters:
-        - collection_name (str): The name of the collection.
-        - data (list): A list of documents to insert.
-        """
-        collection = self.db[collection_name]
-        try:
-            collection.insert_many(data)
-            print(f"✅ {len(data)} documents inserted into '{collection_name}' collection.")
-        except Exception as e:
-            print(f"❌ Error inserting documents: {e}")
-
-    def find(self, collection_name: str, query: Dict[str, Any] = None, projection: Dict[str, Any] = None) -> List[Dict[str, Any]]:
-        """
-        Retrieves documents from the specified collection.
-
-        Parameters:
-        - collection_name (str): The name of the collection.
-        - query (dict): The query filter to apply (default is None).
-        - projection (dict): The fields to include/exclude (default is None).
-
-        Returns:
-        - list: A list of documents matching the query.
-        """
-        collection = self.db[collection_name]
-        query = query or {}
-
-        try:
-            result = list(collection.find(query, projection))
-            print(f"✅ Retrieved {len(result)} documents from '{collection_name}' collection.")
-            return result
-        except Exception as e:
-            print(f"❌ Error retrieving documents: {e}")
-            return []
-
-    def update(self, collection_name: str, query: Dict[str, Any], new_values: Dict[str, Any]) -> None:
-        """
-        Updates documents in the specified collection.
-
-        Parameters:
-        - collection_name (str): The name of the collection.
-        - query (dict): The filter to match documents.
-        - new_values (dict): The new values to set.
-        """
-        collection = self.db[collection_name]
-        try:
-            result = collection.update_many(query, {"$set": new_values})
-            print(f"✅ Updated {result.modified_count} documents in '{collection_name}' collection.")
-        except Exception as e:
-            print(f"❌ Error updating documents: {e}")
-
-    def delete(self, collection_name: str, query: Dict[str, Any]) -> None:
-        """
-        Deletes documents from the specified collection.
-
-        Parameters:
-        - collection_name (str): The name of the collection.
-        - query (dict): The filter to match documents to delete.
-        """
-        collection = self.db[collection_name]
-        try:
-            result = collection.delete_many(query)
-            print(f"✅ Deleted {result.deleted_count} documents from '{collection_name}' collection.")
-        except Exception as e:
-            print(f"❌ Error deleting documents: {e}")
-
-    def load_data_from_json(self, file_path: str) -> None:
-        """
-        Loads data from a JSON file and inserts it into the appropriate collections.
-
-        Parameters:
-        - file_path (str): Path to the JSON file containing the data.
-        """
-        try:
-            with open(file_path, "r") as f:
-                data = json.load(f)
-
-            self.insert_many("players", data.get("players", []))
-            self.insert_many("teams", data.get("teams", []))
-            self.insert("leagues", data.get("leagues", {}))
-            self.insert_many("matches", data.get("matches", []))
-
-            print("✅ Data successfully loaded from JSON file into MongoDB.")
-        except FileNotFoundError:
-            print(f"❌ File not found: {file_path}")
-        except Exception as e:
-            print(f"❌ Error loading data from JSON: {e}")
+        yield db

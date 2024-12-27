@@ -63,9 +63,13 @@ CREATE TABLE classic_statistics (
     matches_won INT,
     matches_lost INT,
     matches_drawn INT,
+    yellow_cards INT,
+    red_cards INT,
+    second_yellows INT,
     goals_scored INT,
-    goals_conceded INT,
-    own_goals INT
+    penalties_won INT,
+    own_goals INT,
+    goals_conceded INT
 );
 
 CREATE TABLE defensive_statistics (

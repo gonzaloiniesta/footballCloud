@@ -5,7 +5,12 @@ import json, time
 
 class PostgreSQLFootballCloud:
 
-    def __init__(self, host="localhost", database="footballcloud_db", user="user", password="1234", port=5432):
+    def __init__(self, host: str = "localhost",
+                 port: int = 5432,
+                 database: str = "footballcloud_db",
+                 user: str = "user",
+                 password: str = "1234"):
+        
         self.connection_params = {
             "host": host,
             "database": database,
@@ -21,6 +26,12 @@ class PostgreSQLFootballCloud:
             print(f"❌ Failed to connect to PostgreSQL: {e}")
             raise
 
+    def get_db(self) -> Generator:
+        """
+        Yields a PostgreSQL database connection.
+        """
+        connection = psycopg2.connect(**self.connection_params)
+        yield connection
 
     def get_team_id(self, team_name: str) -> int:
         """
